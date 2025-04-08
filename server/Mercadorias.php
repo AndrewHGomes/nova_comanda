@@ -124,7 +124,6 @@ class Mercadorias extends Conexao
 
   public function pegarGrupoComplemento()
   {
-
     try {
       $sql = $this->pdo->prepare("SELECT * FROM grupocomp");
 
@@ -143,6 +142,16 @@ class Mercadorias extends Conexao
       echo $e->getMessage();
     }
   }
+
+  public function pegarTaxaEntrega()
+  {
+    $sql = $this->pdo->prepare("
+				SELECT Valor FROM sis_parametro WHERE Nome = 'ValorTaxaEntrega'
+			");
+    $sql->execute();
+
+    echo json_encode($sql->fetchAll(\PDO::FETCH_ASSOC)[0]);
+  }
 }
 
 $mercadorias = new Mercadorias;
@@ -152,3 +161,4 @@ $mercadorias->requerSabores();
 $mercadorias->pegarComplementos();
 $mercadorias->pegarTamanhos();
 $mercadorias->pegarGrupoComplemento();
+$mercadorias->pegarTaxaEntrega();
