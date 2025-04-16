@@ -8,19 +8,20 @@ class Login extends Conexao
   {
     try {
       $sql = $this->pdo->prepare("
-					SELECT funcionarios.Codigo,funcionarios.Nome,funcionarios.Senha,permissoes.utilizarSicomanda20 AS permitido FROM funcionarios 
-					INNER JOIN permissoes ON (permissoes.idFuncionario = funcionarios.Codigo)
-					WHERE funcionarios.ativo = 'Y'
-				");
+                SELECT funcionarios.Codigo, funcionarios.Nome, funcionarios.Senha, permissoes.utilizarSicomanda20 AS permitido
+                FROM funcionarios
+                INNER JOIN permissoes ON (permissoes.idFuncionario = funcionarios.Codigo)
+                WHERE funcionarios.ativo = 'Y'
+            ");
       $sql->execute();
 
-      $array = $sql->fetchAll(\PDO::FETCH_ASSOC);
+      $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
 
-      $nome = "";
-      $senha = "";
+      $retornos = [];
+      $nome = '';
+      $senha = '';
 
       foreach ($array as $dados) {
-
         for ($i = 0; $i <= strlen($dados['Nome']) - 1; $i++) {
           $nome .= chr(~(ord($dados['Nome'][$i]) - 10));
         }
@@ -36,19 +37,23 @@ class Login extends Conexao
           'Permitido' => $dados['permitido']
         ];
 
-        $nome = "";
-        $senha = "";
+        $nome = '';
+        $senha = '';
       }
 
-      return json_encode($retornos);
-    } catch (PDOException $e) {
 
+      error_log("Dados a serem codificados em JSON: " . print_r($retornos, true), 0);
+
+      echo json_encode($retornos);
+    } catch (PDOException $e) {
       http_response_code(500);
-      return json_encode(['erro' => $e->getMessage()]);
+      echo json_encode(['error' => $e->getMessage()]);
+
+      error_log("Erro PDO: " . $e->getMessage(), 0);
     }
   }
 }
 
 $login = new Login;
-header('Content-Type: application/json');
 $login->pegarUsuarios();
+var_dump($login->pegarUsuarios());

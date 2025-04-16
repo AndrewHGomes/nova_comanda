@@ -1,29 +1,30 @@
-fetch("../server/Login.php")
-  .then((resposta) => {
-    if (!resposta.ok) {
-      throw new Error("Erro na requisição: " + resposta.status);
-    }
-    return resposta;
-  })
-  .then((dados) => {
-    try {
-      console.log(dados);
-    } catch (e) {
-      console.error("Resposta não é um JSON válido:", dados);
-    }
-  })
-  .catch((erro) => console.error("Erro:", erro));
+// fetch("../server/Login.php")
+//   .then((resposta) => {
+//     if (!resposta.ok) {
+//       throw new Error("Erro na requisição: " + resposta.status);
+//     }
 
-const btnEntrar = document.querySelector("#enter");
-btnEntrar.addEventListener("click", (e) => {
-  e.preventDefault();
+//     return resposta.json();
+//   })
+//   .then((dados) => {
+//     try {
+//       console.log(dados);
+//     } catch (e) {
+//       console.error("Resposta não é um JSON válido:", e);
+//     }
+//   })
+//   .catch((erro) => console.error("Erro:", erro));
 
-  const selectUsuario = document.querySelector("#usuario");
-  const inputSenha = document.querySelector("#senha");
+// const btnEntrar = document.querySelector("#enter");
+// btnEntrar.addEventListener("click", (e) => {
+//   e.preventDefault();
 
-  const usuario = selectUsuario.value;
-  const senha = inputSenha.value;
+//   const selectUsuario = document.querySelector("#usuario");
+//   const inputSenha = document.querySelector("#senha");
 
-  console.log(usuario);
-  console.log(senha);
-});
+//   const usuario = selectUsuario.value.toLowerCase();
+//   const senha = inputSenha.value.toLowerCase();
+
+//   selectUsuario.value = "";
+//   inputSenha.value = "";
+// });

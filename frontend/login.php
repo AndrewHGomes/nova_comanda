@@ -1,3 +1,10 @@
+<?php
+
+// include_once "../server/Login.php";
+// $login->pegarUsuarios();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -30,6 +37,9 @@
 
   <h4>D'affari Sistemas de Informação</h4>
 
+  <script>
+    console.log(<?php $login->pegarUsuarios() ?>);
+  </script>
 </body>
 
 </html>
