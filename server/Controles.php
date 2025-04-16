@@ -86,16 +86,20 @@ class Controles extends Conexao
 
   public function obterParametroFracao()
   {
-    $sql = $this->pdo->prepare("SELECT valor FROM sis_parametro WHERE nome = 'CalculoFracao'");
+    try {
+      $sql = $this->pdo->prepare("SELECT valor FROM sis_parametro WHERE nome = 'CalculoFracao'");
 
-    $sql->execute();
+      $sql->execute();
 
-    return $sql->fetch(PDO::FETCH_ASSOC)['valor'];
+      return $sql->fetch(PDO::FETCH_ASSOC)['valor'];
+    } catch (PDOException $e) {
+      echo "<p>{$e->getMessage()}</p>";
+    }
   }
 }
 
 $controles = new Controles;
-$controles->tipoDeComanda();
+// $controles->tipoDeComanda();
 $controles->ExigirNomeNaMesa();
 $controles->mostrarTotalHistoricoComanda();
 $controles->obterParametroFracao();
