@@ -1,10 +1,12 @@
 body {
+  width: 100vw;
+  height: 90vh;
   background-color: #333;
   color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 h1,
@@ -13,7 +15,7 @@ h4 {
 }
 
 form {
-  width: 280px;
+  width: 290px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

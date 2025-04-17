@@ -1,10 +1,3 @@
-<?php
-
-// include_once "../server/Login.php";
-// $login->pegarUsuarios();
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 

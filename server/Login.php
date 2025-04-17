@@ -41,19 +41,16 @@ class Login extends Conexao
         $senha = '';
       }
 
-
-      error_log("Dados a serem codificados em JSON: " . print_r($retornos, true), 0);
+      header('Access-Control-Allow-Origin: *');
+      header('Content-Type: application/json');
 
       echo json_encode($retornos);
     } catch (PDOException $e) {
       http_response_code(500);
       echo json_encode(['error' => $e->getMessage()]);
-
-      error_log("Erro PDO: " . $e->getMessage(), 0);
     }
   }
 }
 
 $login = new Login;
 $login->pegarUsuarios();
-var_dump($login->pegarUsuarios());
