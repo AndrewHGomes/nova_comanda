@@ -10,8 +10,9 @@ body {
 }
 
 h1,
-h4 {
+h3 {
   letter-spacing: 0.1em;
+  font-weight: normal;
 }
 
 form {
@@ -28,7 +29,7 @@ select,
 input,
 button {
   width: 100%;
-  padding: 0.5em;
+  padding: 0.6em;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   text-align: center;
@@ -42,7 +43,7 @@ button {
   background-color: #080;
   margin-bottom: 1em;
   font-weight: bold;
-  color: #ddd;
+  color: #fff;
 }
 
 button:hover {
@@ -50,13 +51,29 @@ button:hover {
 }
 
 a {
-  width: 18%;
+  width: 20%;
 }
 
-img {
+#img-refresh {
   display: block;
   margin: 0 auto;
   width: 100%;
   border-radius: 50%;
+  box-shadow: 3px 3px 8px #000;
+}
+
+#empresa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+#logo {
+  width: 5em;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
   box-shadow: 3px 3px 8px #000;
 }
