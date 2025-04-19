@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./img/icone.png">
   <link rel="stylesheet" href="./css/global.css">
-  <link rel="stylesheet" href="./css/inicio.css">
-  <script src="./javascript/inicio.js" defer></script>
-  <title>INÍCIO</title>
+  <link rel="stylesheet" href="./css/produtos.css">
+  <script src="./javascript/produtos.js" defer></script>
+  <title>PRODUTOS</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
       <a href="./login.php">ATUALIZAR</a>
     </div>
     <h2>
-      <a href="./produtos.php">PRODUTOS</a>
+      <a href="./inicio.php">INÍCIO</a>
     </h2>
     <div id="selecionada"><span>5</span></div>
   </header>

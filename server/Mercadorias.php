@@ -4,6 +4,22 @@ require_once 'Conexao.php';
 
 class Mercadorias extends Conexao
 {
+
+  public function pegarCategorias()
+  {
+    try {
+      $sql = $this->pdo->prepare("SELECT categorias.id AS Codigo, categorias.descricao AS Descricao, categorias.Pizza FROM categorias WHERE categorias.ativo = 'S' ORDER BY OrdemComanda");
+
+      $sql->execute();
+
+      $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
+
+      echo json_encode($array);
+    } catch (PDOException $e) {
+      echo "<p>{$e->getMessage()}</p>";
+    }
+  }
+
   public function pegarMercadorias()
   {
     try {
@@ -31,22 +47,7 @@ class Mercadorias extends Conexao
 
       $dados = [$codMerc, $descricao, $borda, $venda, $complemento, $observacao, $requerComplemento, $requerSabor, $quantidadeSabor, $sabor, $grupo];
 
-      return json_encode($dados);
-    } catch (PDOException $e) {
-      echo "<p>{$e->getMessage()}</p>";
-    }
-  }
-
-  public function pegarCategorias()
-  {
-    try {
-      $sql = $this->pdo->prepare("SELECT categorias.id AS Codigo, categorias.descricao AS Descricao, categorias.Pizza FROM categorias WHERE categorias.ativo = 'S' GROUP BY categorias.OrdemComanda");
-
-      $sql->execute();
-
-      $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
-
-      return json_encode($array);
+      echo json_encode($dados);
     } catch (PDOException $e) {
       echo "<p>{$e->getMessage()}</p>";
     }
@@ -155,10 +156,11 @@ class Mercadorias extends Conexao
 }
 
 $mercadorias = new Mercadorias;
-$mercadorias->pegarMercadorias();
+
 $mercadorias->pegarCategorias();
-$mercadorias->requerSabores();
-$mercadorias->pegarComplementos();
-$mercadorias->pegarTamanhos();
-$mercadorias->pegarGrupoComplemento();
-$mercadorias->pegarTaxaEntrega();
+// $mercadorias->pegarMercadorias();
+// $mercadorias->requerSabores();
+// $mercadorias->pegarComplementos();
+// $mercadorias->pegarTamanhos();
+// $mercadorias->pegarGrupoComplemento();
+// $mercadorias->pegarTaxaEntrega();
