@@ -34,6 +34,11 @@ header h2 {
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
 }
 
 .visivel a {
@@ -57,6 +62,12 @@ header h2 {
 #selecionada span {
   font-size: 1.2em;
   font-weight: bold;
+}
+
+#comandaCliente {
+  width: 3em;
+  height: 3em;
+  border-radius: 5px;
 }
 
 footer {

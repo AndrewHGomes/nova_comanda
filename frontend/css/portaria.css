@@ -25,7 +25,6 @@ form {
   gap: 1.5em;
 }
 
-select,
 input,
 button {
   width: 100%;
@@ -39,27 +38,29 @@ button {
   box-shadow: 3px 3px 8px #000;
 }
 
-button {
+a {
+  display: block;
+  width: 290px;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.5em;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 3px 3px 8px #000;
+}
+
+button,
+a {
   background-color: #080;
   margin-bottom: 1em;
   font-weight: bold;
   color: #fff;
+  cursor: pointer;
 }
 
-button:hover {
+button:hover,
+a:hover {
   background-color: #0a0;
-}
-
-a {
-  width: 20%;
-}
-
-#img-refresh {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  border-radius: 50%;
-  box-shadow: 3px 3px 8px #000;
 }
 
 #empresa {

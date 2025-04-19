@@ -7,8 +7,7 @@ class Controles extends Conexao
   public function tipoDeComanda()
   {
     try {
-      $sql = $this->pdo->prepare("SELECT Valor FROM sis_parametro WHERE Nome = :nome");
-      $sql->bindParam(':nome', 'ComandaEntrada', PDO::PARAM_STR);
+      $sql = $this->pdo->prepare("SELECT Valor FROM sis_parametro WHERE Nome = 'ComandaEntrada'");
 
       $sql->execute();
 
@@ -16,40 +15,23 @@ class Controles extends Conexao
 
       $parametro = $dados[0]['Valor'];
 
-      print_r($parametro);
+      if ($parametro === "P") {
+        $sqlNomes = $this->pdo->prepare("SELECT * FROM comandacab");
 
-      // return json_encode($parametro);
+        $sqlNomes->execute();
 
-      // if ($parametro === "P") {
-      //   $sqlNome = $this->pdo->prepare("SELECT * FROM comandacab");
+        $arrayNomes = $sqlNomes->rowCount() ? $sqlNomes->fetchAll(\PDO::FETCH_ASSOC) : [];
 
-      //   $sqlNome->execute();
+        echo json_encode([$parametro, $arrayNomes]);
+      } elseif ($parametro === "M") {
+        $sqlMesas = $this->pdo->prepare("SELECT NComandas FROM parametros");
 
-      //   $arrayNome = $sqlNome->rowCount() ? $sqlNome->fetchAll(\PDO::FETCH_ASSOC) : [];
+        $sqlMesas->execute();
 
-      //   foreach ($arrayNome as $item) {
-      //     $codigo[] = $item['Codigo'];
-      //     $codigoComanda[] = $item['CodigoComanda'];
-      //     $telefone[] = $item['Telefone'];
-      //     $cliente[] = $item['Cliente'];
-      //   }
+        $arrayMesas = $sqlMesas->rowCount() ? $sqlMesas->fetchAll(\PDO::FETCH_ASSOC)[0] : [];
 
-      //   return json_encode([
-      //     $parametro,
-      //     $codigo,
-      //     $codigoComanda,
-      //     $telefone,
-      //     $cliente
-      //   ]);
-      //   } elseif ($parametro === "M") {
-      //     $sqlMesa = $this->pdo->prepare("SELECT NComandas FROM parametros");
-
-      //     $sqlMesa->execute();
-
-      //     $arrayMesa = $sqlMesa->rowCount() ? $sqlMesa->fetchAll(\PDO::FETCH_ASSOC)[0] : [];
-
-      //     echo json_encode([$parametro, $arrayMesa]);
-      //   }
+        echo json_encode([$parametro, $arrayMesas]);
+      }
     } catch (PDOException $e) {
       echo "<p>{$e->getMessage()}</p>";
     }
@@ -105,9 +87,8 @@ class Controles extends Conexao
 
 $controles = new Controles;
 
-if (isset($_GET['acao']) && $_GET['acao'] === 'tipoDeComanda') {
-  $controles->tipoDeComanda();
-}
+$controles->tipoDeComanda();
+
 
 // $controles->ExigirNomeNaMesa();
 // $controles->mostrarTotalHistoricoComanda();
