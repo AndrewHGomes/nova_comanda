@@ -4,22 +4,6 @@ require_once 'Conexao.php';
 
 class Mercadorias extends Conexao
 {
-
-  public function pegarCategorias()
-  {
-    try {
-      $sql = $this->pdo->prepare("SELECT categorias.id AS Codigo, categorias.descricao AS Descricao, categorias.Pizza FROM categorias WHERE categorias.ativo = 'S' ORDER BY OrdemComanda");
-
-      $sql->execute();
-
-      $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
-
-      echo json_encode($array);
-    } catch (PDOException $e) {
-      echo "<p>{$e->getMessage()}</p>";
-    }
-  }
-
   public function pegarMercadorias()
   {
     try {
@@ -31,136 +15,13 @@ class Mercadorias extends Conexao
 
       $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
 
-      foreach ($array as $item) {
-        $codMerc[] = $item['CodMerc'];
-        $descricao[] = $item['Descricao'];
-        $borda[] = $item['borda'];
-        $venda[] = $item['Venda'];
-        $complemento[] = $item['Complemento'];
-        $observacao[] = $item['Observacao'];
-        $requerComplemento[] = $item['RequerComplemento'];
-        $requerSabor[] = $item['requerSabor'];
-        $quantidadeSabor[] = $item['quantidadeSabor'];
-        $sabor[] = $item['sabor'];
-        $grupo[] = $item['grupo'];
-      }
-
-      $dados = [$codMerc, $descricao, $borda, $venda, $complemento, $observacao, $requerComplemento, $requerSabor, $quantidadeSabor, $sabor, $grupo];
-
-      echo json_encode($dados);
+      echo json_encode($array);
     } catch (PDOException $e) {
       echo "<p>{$e->getMessage()}</p>";
     }
-  }
-
-  public function requerSabores()
-  {
-    try {
-      $sql = $this->pdo->prepare("SELECT mercadorias.Descricao as DescMerc,mercadorias.Observacao, sabores.*, 0 as quantidade FROM sabores INNER JOIN mercadorias ON (mercadorias.Codigo = sabores.idSabor)");
-
-      $sql->execute();
-
-      $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
-
-      foreach ($array as $item) {
-        $id[] = $item['id'];
-        $idMerc[] = $item['idMerc'];
-        $idSabor[] = $item['idSabor'];
-        $valor[] = $item['valor'];
-      }
-
-      return json_encode([
-        $id,
-        $idMerc,
-        $idSabor,
-        $valor
-      ]);
-    } catch (PDOException $e) {
-      echo "<p>{$e->getMessage()}</p>";
-    }
-  }
-
-  public function pegarComplementos()
-  {
-    try {
-      $sql = $this->pdo->prepare("SELECT mercadorias.Codigo as CodMerc, mercadorias.Descricao, mercadorias.Venda, mercadorias.Complemento FROM mercadorias WHERE mercadorias.Ativo = 'S' AND Comanda = 'S' AND mercadorias.Complemento = 'S' GROUP BY mercadorias.Codigo ORDER BY mercadorias.Descricao ASC
-			");
-
-      $sql->execute();
-
-      $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
-
-      foreach ($array as $item) {
-        $codigo[] = $item['CodMerc'];
-        $descricao[] = $item['Descricao'];
-        $venda[] = $item['Venda'];
-        $complemento[] = $item['Complemento'];
-      }
-
-      return json_encode([
-        $codigo,
-        $descricao,
-        $venda,
-        $complemento
-      ]);
-    } catch (PDOException $e) {
-      echo "<p>{$e->getMessage()}</p>";
-    }
-  }
-
-  public function pegarTamanhos()
-  {
-    try {
-      $sql = $this->pdo->prepare("SELECT precostamanho.*,mercadorias.Codigo AS CodTbMercadoria,mercadorias.RequerComplemento,tamanho.* FROM precostamanho INNER JOIN mercadorias ON (mercadorias.Codigo = precostamanho.CodMerc) INNER JOIN tamanho ON (precostamanho.Tamanho = tamanho.Descricao)
-				");
-      $sql->execute();
-
-      $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
-
-      return json_encode($array);
-    } catch (PDOException $e) {
-      echo "<p>{$e->getMessage()}</p>";
-    }
-  }
-
-  public function pegarGrupoComplemento()
-  {
-    try {
-      $sql = $this->pdo->prepare("SELECT * FROM grupocomp");
-
-      $sql->execute();
-
-      $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
-
-      foreach ($array as $item) {
-        $id[] = $item['id'];
-        $descricao[] = $item['Descricao'];
-      }
-
-      return json_encode([$id, $descricao]);
-    } catch (PDOException $e) {
-
-      echo $e->getMessage();
-    }
-  }
-
-  public function pegarTaxaEntrega()
-  {
-    $sql = $this->pdo->prepare("
-				SELECT Valor FROM sis_parametro WHERE Nome = 'ValorTaxaEntrega'
-			");
-    $sql->execute();
-
-    echo json_encode($sql->fetchAll(\PDO::FETCH_ASSOC)[0]);
   }
 }
 
 $mercadorias = new Mercadorias;
 
-$mercadorias->pegarCategorias();
-// $mercadorias->pegarMercadorias();
-// $mercadorias->requerSabores();
-// $mercadorias->pegarComplementos();
-// $mercadorias->pegarTamanhos();
-// $mercadorias->pegarGrupoComplemento();
-// $mercadorias->pegarTaxaEntrega();
+$mercadorias->pegarMercadorias();

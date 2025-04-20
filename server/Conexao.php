@@ -16,7 +16,6 @@ class Conexao
       $this->pdo = new PDO("mysql:host=127.0.0.1;dbname=sicomercio_fornalha;charset=utf8", "root", "");
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-      // echo "<p>Conexão estabelecida</p>";
     } catch (PDOException $e) {
       echo "<p>Algo errado com a conexão: {$e->getMessage()}</p>";
     }

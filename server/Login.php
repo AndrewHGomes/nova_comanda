@@ -7,12 +7,7 @@ class Login extends Conexao
   public function pegarUsuarios()
   {
     try {
-      $sql = $this->pdo->prepare("
-                    SELECT funcionarios.Codigo, funcionarios.Nome, funcionarios.Senha, permissoes.utilizarSicomanda20 AS permitido
-                    FROM funcionarios
-                    INNER JOIN permissoes ON (permissoes.idFuncionario = funcionarios.Codigo)
-                    WHERE funcionarios.ativo = 'Y'
-                ");
+      $sql = $this->pdo->prepare("SELECT funcionarios.Codigo, funcionarios.Nome, funcionarios.Senha, permissoes.utilizarSicomanda20 AS permitido FROM funcionarios INNER JOIN permissoes ON (permissoes.idFuncionario = funcionarios.Codigo) WHERE funcionarios.ativo = 'Y'");
       $sql->execute();
 
       $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
@@ -31,16 +26,17 @@ class Login extends Conexao
         }
       }
 
-      header('Access-Control-Allow-Origin: *');
-      header('Content-Type: application/json');
+      // header('Access-Control-Allow-Origin: *');
+      // header('Content-Type: application/json');
 
       echo json_encode($array);
     } catch (PDOException $e) {
-      http_response_code(500);
-      echo json_encode(['error' => $e->getMessage()]);
+
+      echo "<p>{$e->getMessage()}</p>";
     }
   }
 }
 
 $login = new Login;
+
 $login->pegarUsuarios();

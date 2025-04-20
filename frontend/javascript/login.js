@@ -4,10 +4,13 @@ const inputSenha = document.querySelector("#senha");
 async function getFetch() {
   try {
     const resposta = await fetch("../server/Login.php");
+
     if (!resposta.ok) {
       throw new Error("Erro:", resposta.status);
     }
+
     const dados = await resposta.json();
+
     const usuarios = dados.forEach((usuario, i) => {
       const optionUsuario = document.createElement("option");
       optionUsuario.setAttribute("value", usuario["Nome"]);

@@ -1,0 +1,26 @@
+<?php
+
+require_once "Conexao.php";
+
+class Complementos extends Conexao
+{
+  public function pegarComplementos()
+  {
+    try {
+      $sql = $this->pdo->prepare("SELECT mercadorias.Codigo as CodMerc, mercadorias.Descricao, mercadorias.Venda, mercadorias.Complemento FROM mercadorias WHERE mercadorias.Ativo = 'S' AND Comanda = 'S' AND mercadorias.Complemento = 'S' GROUP BY mercadorias.Codigo ORDER BY mercadorias.Descricao ASC
+			");
+
+      $sql->execute();
+
+      $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
+
+      echo json_encode($array);
+    } catch (PDOException $e) {
+      echo "<p>{$e->getMessage()}</p>";
+    }
+  }
+}
+
+$complementos = new Complementos;
+
+$complementos->pegarComplementos();

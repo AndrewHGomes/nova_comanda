@@ -1,4 +1,5 @@
 const imgMenu = document.querySelector("#img-menu");
+const comandaSelecionada = document.querySelector("#selecionada");
 
 imgMenu.addEventListener("click", () => {
   if (menu.className === "invisivel") {
@@ -13,7 +14,7 @@ const main = document.querySelector("main");
 
 async function pegarTipoComanda() {
   try {
-    const resposta = await fetch("../server/Controles.php?tipoDeComanda");
+    const resposta = await fetch("../server/TipoDeComanda.php?tipoDeComanda");
     if (!resposta.ok) {
       throw new Error("Erro:", resposta.status);
     }
@@ -60,6 +61,20 @@ async function pegarTipoComanda() {
         comandaMesa.append(textoNumeroMesa);
         main.append(comandaMesa);
       }
+
+      const mesasComandas = document.querySelectorAll(".comandaMesa");
+
+      mesasComandas.forEach((cadaMesa) => {
+        cadaMesa.addEventListener("click", () => {
+          comandaSelecionada.innerText = cadaMesa.innerText;
+        });
+      });
+
+      comandaSelecionada.addEventListener("click", (e) => {
+        if (e.target.innerText === "" || e.target.innerText === undefined) {
+          alert("SELECIONE UMA COMANDA...");
+        }
+      });
     }
   } catch (erro) {
     console.log("Ocorreu um erro:", erro);

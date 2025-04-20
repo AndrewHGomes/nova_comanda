@@ -20,7 +20,7 @@
     <h2>
       <a href="./inicio.php">INÍCIO</a>
     </h2>
-    <div id="selecionada"><span>5</span></div>
+    <div id="selecionada"></div>
   </header>
   <main></main>
   <footer>

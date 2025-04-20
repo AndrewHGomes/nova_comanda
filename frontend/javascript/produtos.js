@@ -1,3 +1,4 @@
+const comandaSelecionada = document.querySelector("#selecionada");
 const main = document.querySelector("main");
 const imgMenu = document.querySelector("#img-menu");
 
@@ -10,7 +11,7 @@ imgMenu.addEventListener("click", () => {
 });
 
 async function pegarCategorias() {
-  const resposta = await fetch("../server/Mercadorias.php?pegarCategorias");
+  const resposta = await fetch("../server/Categorias.php?pegarCategorias");
   if (!resposta.ok) {
     throw new Error("Erro:", resposta.status);
   }
@@ -28,6 +29,14 @@ async function pegarCategorias() {
 
     divCategoria.append(textoCategoria, imgCategoria);
     main.append(divCategoria);
+  });
+
+  const categoriasDiv = document.querySelectorAll(".divCategoria");
+
+  categoriasDiv.forEach((cadaCategoria) => {
+    cadaCategoria.addEventListener("click", (e) => {
+      console.log(e.target.innerText);
+    });
   });
 }
 
