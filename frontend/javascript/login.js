@@ -1,7 +1,7 @@
 const selectUsuario = document.querySelector("#usuario");
 const inputSenha = document.querySelector("#senha");
 
-async function getFetch() {
+async function pegarUsuarios() {
   try {
     const resposta = await fetch("../server/Login.php");
 
@@ -22,7 +22,7 @@ async function getFetch() {
   }
 }
 
-getFetch();
+pegarUsuarios();
 
 const btnEntrar = document.querySelector("#enter");
 btnEntrar.addEventListener("click", (e) => {
@@ -34,5 +34,12 @@ btnEntrar.addEventListener("click", (e) => {
   selectUsuario.value = "";
   inputSenha.value = "";
 
-  location.href = "inicio.php";
+  const loading = document.querySelector("#loading");
+
+  loading.style.display = "block";
+
+  setTimeout(() => {
+    loading.style.display = "none";
+    location.href = "inicio.php";
+  }, 2000);
 });

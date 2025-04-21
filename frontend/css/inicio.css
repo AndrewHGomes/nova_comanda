@@ -4,7 +4,6 @@ header {
   position: fixed;
   top: 0;
   padding: 0.5em;
-  border-bottom: 1px solid #000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,9 +68,10 @@ header h2 a {
 }
 
 main {
+  width: 100%;
   padding: 0.5em;
-  padding-top: 4.5em;
-  padding-bottom: 4em;
+  padding-top: 5em;
+  padding-bottom: 5em;
   scroll-behavior: auto;
   display: flex;
   justify-content: space-evenly;
@@ -120,7 +120,6 @@ footer {
   background-color: #333;
   position: fixed;
   bottom: 0;
-  border-top: 1px solid #000;
   text-align: center;
   padding: 0.5em;
 }

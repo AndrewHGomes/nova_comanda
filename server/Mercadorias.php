@@ -25,3 +25,7 @@ class Mercadorias extends Conexao
 $mercadorias = new Mercadorias;
 
 $mercadorias->pegarMercadorias();
+
+if (isset($_GET['nomecategoria'])) {
+  $nomeCategoria = $_GET['nomecategoria'];
+}

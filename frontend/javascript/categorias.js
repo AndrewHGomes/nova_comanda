@@ -15,9 +15,10 @@ async function pegarCategorias() {
   if (!resposta.ok) {
     throw new Error("Erro:", resposta.status);
   }
+
   const categorias = await resposta.json();
 
-  categorias.forEach((categoria) => {
+  categorias.forEach((categoria, i) => {
     const divCategoria = document.createElement("div");
     divCategoria.setAttribute("class", "divCategoria");
 
@@ -25,7 +26,7 @@ async function pegarCategorias() {
     textoCategoria.innerText = categoria.Descricao;
 
     const imgCategoria = document.createElement("img");
-    imgCategoria.setAttribute("src", "algo");
+    imgCategoria.setAttribute("src", `./img/${i}.png`);
 
     divCategoria.append(textoCategoria, imgCategoria);
     main.append(divCategoria);
@@ -33,9 +34,11 @@ async function pegarCategorias() {
 
   const categoriasDiv = document.querySelectorAll(".divCategoria");
 
-  categoriasDiv.forEach((cadaCategoria) => {
+  categoriasDiv.forEach((cadaCategoria, i) => {
     cadaCategoria.addEventListener("click", (e) => {
-      console.log(e.target.innerText);
+      const nomeCategoria = categorias[i].Descricao;
+
+      location.href = `./mercadorias.php?nomecategoria=${nomeCategoria}`;
     });
   });
 }

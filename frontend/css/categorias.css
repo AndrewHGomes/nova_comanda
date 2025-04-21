@@ -4,7 +4,6 @@ header {
   position: fixed;
   top: 0;
   padding: 0.5em;
-  border-bottom: 1px solid #000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,13 +68,14 @@ header h2 a {
 }
 
 main {
+  width: 100%;
   padding: 0.5em;
-  padding-top: 4.5em;
+  padding-top: 5em;
   padding-bottom: 4em;
   scroll-behavior: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 1em;
 }
@@ -100,8 +100,12 @@ main {
   color: #fff;
 }
 
+.divCategoria img {
+  width: 2em;
+  filter: drop-shadow(2px 2px 2px #000);
+}
+
 footer {
-  border-top: 1px solid #000;
   width: 100%;
   background-color: #333;
   position: fixed;

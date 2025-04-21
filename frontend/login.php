@@ -27,6 +27,8 @@
       <img src="img/refresh.png" id="img-refresh">
     </a>
 
+    <img src="img/loading.gif" id="loading">
+
   </form>
 
   <div id="empresa">
