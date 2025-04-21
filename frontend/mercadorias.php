@@ -20,9 +20,9 @@
   </main>
   <footer>
     <div id="quantidade">
-      <img src="./img/minus.png">
-      <input type="number" value="1">
-      <img src="./img/plus.png">
+      <img src="./img/minus.png" id="imgIdMinus">
+      <input type="number" value="1" id="inputIdQuantidade" disabled>
+      <img src="./img/plus.png" id="imgIdPlus">
     </div>
     <button>ADICIONAR</button>
   </footer>
