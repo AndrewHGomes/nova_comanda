@@ -17,7 +17,7 @@ class Conexao
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
     } catch (PDOException $e) {
-      echo "<p>Algo errado com a conexão: {$e->getMessage()}</p>";
+      echo $e->getMessage();
     }
   }
 }

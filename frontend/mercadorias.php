@@ -13,7 +13,10 @@
 
 <body>
   <header>
-    <h3>Alguma categoria</h3>
+    <a href="./categorias.php">
+      <img src="./img/voltar.png">
+    </a>
+    <h3></h3>
   </header>
   <main>
 

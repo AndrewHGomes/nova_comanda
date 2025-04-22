@@ -1,15 +1,21 @@
 header {
+  background-color: #333;
+  color: #fff;
   width: 100%;
   height: 2.5em;
   position: fixed;
   top: 0;
-  background-color: #333;
   padding: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 3em;
 }
 
-header h3 {
-  text-align: center;
-  color: #fff;
+header img {
+  width: 1.3em;
+  border-radius: 50%;
+  box-shadow: 3px 3px 8px #000;
 }
 
 main {
@@ -62,10 +68,10 @@ main {
 .btnComplemento {
   background-color: #080;
   color: #fff;
-  padding: 0.3em;
+  padding: 0.2em 0.5em;
   outline: none;
   border: none;
-  font-size: 1em;
+  font-size: 0.9em;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }

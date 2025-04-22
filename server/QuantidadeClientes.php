@@ -4,6 +4,11 @@ require 'Conexao.php';
 
 class QuantidadeClientes extends Conexao
 {
+  public function __construct()
+  {
+    parent::__construct();
+  }
+
   public function inserirClientes($quantidade, $mesa)
   {
     $stmt = $this->pdo->prepare("INSERT INTO comandacab (QtdPessoas, CodigoComanda) VALUES (:quantidade, :mesa)");

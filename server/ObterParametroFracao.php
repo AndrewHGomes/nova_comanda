@@ -4,6 +4,11 @@ require_once "Conexao.php";
 
 class ObterParametroFracao extends Conexao
 {
+  public function __construct()
+  {
+    parent::__construct();
+  }
+
   public function obterParametroFracao()
   {
     try {

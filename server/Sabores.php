@@ -4,6 +4,11 @@ require_once "Conexao.php";
 
 class Sabores extends Conexao
 {
+  public function __construct()
+  {
+    parent::__construct();
+  }
+
   public function pegarSabores()
   {
     try {

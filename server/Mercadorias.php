@@ -4,6 +4,11 @@ require_once 'Conexao.php';
 
 class Mercadorias extends Conexao
 {
+  public function __construct()
+  {
+    parent::__construct();
+  }
+
   public function pegarMercadorias()
   {
     try {

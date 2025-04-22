@@ -23,11 +23,11 @@ async function pegarTipoComanda() {
     const parametroTipoComanda = dados[0];
 
     if (parametroTipoComanda && parametroTipoComanda === "P") {
-      const linkComandaPorPessoa = document.createElement("a");
-      linkComandaPorPessoa.setAttribute("href", "./portaria.php");
-      linkComandaPorPessoa.innerText = "PORTARIA";
+      const linkPortaria = document.createElement("a");
+      linkPortaria.setAttribute("href", "./portaria.php");
+      linkPortaria.innerText = "PORTARIA";
 
-      menu.appendChild(linkComandaPorPessoa);
+      menu.appendChild(linkPortaria);
 
       const clientes = dados[1];
 

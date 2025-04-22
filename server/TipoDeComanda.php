@@ -4,10 +4,15 @@ require_once "Conexao.php";
 
 class TipoDeComanda extends Conexao
 {
+  public function __construct()
+  {
+    parent::__construct();
+  }
+
   public function tipoDeComanda()
   {
     try {
-      $sql = $this->pdo->prepare("SELECT Valor FROM sis_parametro WHERE Nome = 'ComandaEntrada'");
+      $sql = $this->pdo->prepare("SELECT Valor FROM sis_parametro WHERE Nome = 'TipoDeComanda'");
 
       $sql->execute();
 
@@ -31,7 +36,7 @@ class TipoDeComanda extends Conexao
         echo json_encode([$parametro, $arrayMesas]);
       }
     } catch (PDOException $e) {
-      echo "<p>{$e->getMessage()}</p>";
+      echo $e->getMessage();
     }
   }
 }
