@@ -33,26 +33,26 @@ btnEntrar.addEventListener("click", (e) => {
   const usuario = selectUsuario.value;
   const senha = inputSenha.value;
 
-  usuarios.forEach((user) => {
-    console.log(user);
-    // if (
-    //   user.Nome.toLowerCase() === usuario &&
-    //   user.Senha.toLowerCase() === senha &&
-    //   user.Permitido === "S"
-    // ) {
-    //   logado.push(user);
-    // }
-  });
+  // usuarios.forEach((user) => {
+  //   console.log(user);
+  //   // if (
+  //   //   user.Nome.toLowerCase() === usuario &&
+  //   //   user.Senha.toLowerCase() === senha &&
+  //   //   user.Permitido === "S"
+  //   // ) {
+  //   //   logado.push(user);
+  //   // }
+  // });
 
   selectUsuario.value = "";
   inputSenha.value = "";
 
-  // const loading = document.querySelector("#loading");
+  const loading = document.querySelector("#loading");
 
-  // loading.style.display = "block";
+  loading.style.display = "block";
 
-  // setTimeout(() => {
-  //   loading.style.display = "none";
-  //   location.href = "inicio.php";
-  // }, 2000);
+  setTimeout(() => {
+    loading.style.display = "none";
+    location.href = "inicio.php";
+  }, 2000);
 });
