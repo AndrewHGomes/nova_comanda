@@ -1,20 +1,20 @@
+let usuarios;
 const selectUsuario = document.querySelector("#usuario");
 const inputSenha = document.querySelector("#senha");
 
 async function pegarUsuarios() {
   try {
     const resposta = await fetch("../server/Login.php");
-
     if (!resposta.ok) {
       throw new Error("Erro:", resposta.status);
     }
 
-    const dados = await resposta.json();
+    usuarios = await resposta.json();
 
-    const usuarios = dados.forEach((usuario, i) => {
+    usuarios.forEach((usuario) => {
       const optionUsuario = document.createElement("option");
-      optionUsuario.setAttribute("value", usuario["Nome"]);
-      optionUsuario.innerText = usuario["Nome"];
+      optionUsuario.setAttribute("value", usuario.Nome);
+      optionUsuario.innerText = usuario.Nome;
       selectUsuario.append(optionUsuario);
     });
   } catch (erro) {
@@ -24,22 +24,35 @@ async function pegarUsuarios() {
 
 pegarUsuarios();
 
+const logado = [];
+
 const btnEntrar = document.querySelector("#enter");
 btnEntrar.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const usuario = selectUsuario.value.toLowerCase();
-  const senha = inputSenha.value.toLowerCase();
+  const usuario = selectUsuario.value;
+  const senha = inputSenha.value;
+
+  usuarios.forEach((user) => {
+    console.log(user);
+    // if (
+    //   user.Nome.toLowerCase() === usuario &&
+    //   user.Senha.toLowerCase() === senha &&
+    //   user.Permitido === "S"
+    // ) {
+    //   logado.push(user);
+    // }
+  });
 
   selectUsuario.value = "";
   inputSenha.value = "";
 
-  const loading = document.querySelector("#loading");
+  // const loading = document.querySelector("#loading");
 
-  loading.style.display = "block";
+  // loading.style.display = "block";
 
-  setTimeout(() => {
-    loading.style.display = "none";
-    location.href = "inicio.php";
-  }, 2000);
+  // setTimeout(() => {
+  //   loading.style.display = "none";
+  //   location.href = "inicio.php";
+  // }, 2000);
 });
