@@ -1,4 +1,4 @@
-const tituloPagina = document.querySelector("header > h3");
+const tituloPagina = document.querySelector("header > div > h3");
 
 const main = document.querySelector("main");
 

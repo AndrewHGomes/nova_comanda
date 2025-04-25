@@ -32,9 +32,6 @@ async function pegarTipoComanda() {
       const clientes = dados[1];
 
       clientes.forEach((cliente) => {
-        console.log(cliente.CodigoComanda);
-        console.log(cliente.Cliente);
-
         const comandaCliente = document.createElement("div");
         comandaCliente.setAttribute("class", "comandaCliente");
 
