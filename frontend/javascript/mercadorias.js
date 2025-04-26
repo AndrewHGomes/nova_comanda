@@ -1,4 +1,4 @@
-const tituloPagina = document.querySelector("header > div > h3");
+const tituloPagina = document.createElement("h3");
 
 const main = document.querySelector("main");
 
@@ -31,6 +31,7 @@ async function pegarMercadorias() {
   limparUrl = mercadoriaUrl.replaceAll("%20", " ");
 
   tituloPagina.innerText = limparUrl;
+  main.append(tituloPagina);
 
   mercadorias.forEach((mercadoria) => {
     if (mercadoria.categoria === limparUrl && mercadoria.Complemento === "N") {
@@ -69,6 +70,8 @@ async function pegarMercadorias() {
       btnComplemeto.innerText = "COMPLEMENTOS";
 
       divDescricao.append(spanDescricao, spanQuantidade);
+
+      //
 
       if (mercadoria.RequerComplemento === "S") {
         divComplemento.append(btnComplemeto);

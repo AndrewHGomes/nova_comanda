@@ -13,16 +13,11 @@
 
 <body>
   <header>
-    <div id="cabecalho">
-      <a href="./categorias.php">
-        <img src="./img/voltar.png">
-      </a>
-      <h3></h3>
-      <span>3/3</span>
-    </div>
-    <div id="pesquisa">
-      <input type="text" id="pesquisarMercadoria" placeholder="PESQUISAR">
-    </div>
+    <a href="./categorias.php">
+      <img src="./img/voltar.png">
+    </a>
+    <input type="text" id="pesquisarMercadoria" placeholder="PESQUISAR PRODUTO">
+    <span>1/1</span>
   </header>
   <main>
 

@@ -4,37 +4,26 @@ header {
   width: 100%;
   position: fixed;
   top: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-header div {
-  width: 100%;
   padding: 0.5em;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 }
 
-header #cabecalho span {
-  background-color: #c00;
-  padding: 0.3em 0.5em;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
+header a {
+  width: 2.5em;
+  border-radius: 50%;
 }
 
-header #pesquisa {
-  justify-content: center;
-}
-
-header img {
-  width: 1.5em;
+header a img {
+  width: 100%;
   border-radius: 50%;
   box-shadow: 3px 3px 8px #000;
 }
 
 header input {
-  width: 20em;
+  width: 100%;
+  margin: 0 1em;
   padding: 0.5em;
   outline: none;
   border: none;
@@ -42,12 +31,27 @@ header input {
   text-transform: uppercase;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  box-shadow: 3px 3px 8px #000;
+}
+
+header span {
+  background-color: #a00;
+  padding: 0.4em;
+  border-radius: 10%;
+  box-shadow: 3px 3px 8px #000;
 }
 
 main {
-  padding-top: 5.5em;
-  padding-bottom: 4.5em;
+  padding-top: 2.8em;
+  padding-bottom: 4em;
   scroll-behavior: auto;
+}
+
+main h3 {
+  background-color: #333;
+  color: #0f0;
+  text-align: center;
+  padding: 0.5em;
 }
 
 .divMercadoria {
