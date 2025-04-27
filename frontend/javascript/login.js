@@ -53,6 +53,6 @@ btnEntrar.addEventListener("click", (e) => {
 
   setTimeout(() => {
     loading.style.display = "none";
-    location.href = "inicio.php";
+    location.href = "index.php";
   }, 2000);
 });

@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./img/icone.png">
   <link rel="stylesheet" href="./css/global.css">
-  <link rel="stylesheet" href="./css/inicio.css">
-  <script src="./javascript/inicio.js" defer></script>
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="./javascript/index.js" defer></script>
   <title>INÍCIO</title>
 </head>
 

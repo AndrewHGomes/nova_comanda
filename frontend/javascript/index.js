@@ -70,6 +70,8 @@ async function pegarTipoComanda() {
       comandaSelecionada.addEventListener("click", (e) => {
         if (e.target.innerText === "" || e.target.innerText === undefined) {
           alert("SELECIONE UMA COMANDA...");
+        } else {
+          location.href = "./historico.php";
         }
       });
     }

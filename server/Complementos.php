@@ -12,7 +12,7 @@ class Complementos extends Conexao
   public function pegarComplementos()
   {
     try {
-      $sql = $this->pdo->prepare("SELECT mercadorias.Codigo as CodMerc, mercadorias.Descricao, mercadorias.Venda, mercadorias.Complemento FROM mercadorias WHERE mercadorias.Ativo = 'S' AND Comanda = 'S' AND mercadorias.Complemento = 'S' GROUP BY mercadorias.Codigo ORDER BY mercadorias.Descricao ASC
+      $sql = $this->pdo->prepare("SELECT mercadorias.Codigo as CodMerc, mercadorias.Descricao, mercadorias.Venda, mercadorias.Complemento, mercadorias.Grupo FROM mercadorias WHERE mercadorias.Ativo = 'S' AND Comanda = 'S' AND mercadorias.Complemento = 'S' GROUP BY mercadorias.Codigo ORDER BY mercadorias.Grupo ASC
 			");
 
       $sql->execute();

@@ -18,7 +18,7 @@
       <a href="./login.php">ATUALIZAR</a>
     </div>
     <h2>
-      <a href="./inicio.php">INÍCIO</a>
+      <a href="./index.php">INÍCIO</a>
     </h2>
     <div id="selecionada"></div>
   </header>

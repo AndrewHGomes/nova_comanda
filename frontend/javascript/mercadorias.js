@@ -40,7 +40,6 @@ async function pegarMercadorias() {
     btnAdicionar.style.width = "100%";
   } else {
     const linkVoltar = document.querySelector("header > a");
-    console.log(linkVoltar);
     linkVoltar.setAttribute("href", "./pizza.php");
   }
 
@@ -48,6 +47,7 @@ async function pegarMercadorias() {
   main.append(tituloPagina);
 
   mercadorias.forEach((mercadoria) => {
+    console.log(mercadoria.Grupo);
     if (mercadoria.categoria === limparUrl && mercadoria.Complemento === "N") {
       const divMercadoria = document.createElement("div");
       divMercadoria.setAttribute("class", "divMercadoria");
@@ -93,6 +93,10 @@ async function pegarMercadorias() {
       }
 
       main.append(divMercadoria);
+
+      btnComplemeto.addEventListener("click", () => {
+        location.href = "./complementos.php";
+      });
     }
   });
 
