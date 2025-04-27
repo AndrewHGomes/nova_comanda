@@ -2,6 +2,8 @@ const tituloPagina = document.createElement("h3");
 
 const main = document.querySelector("main");
 
+const footer = document.createElement("footer");
+
 const imgIdMinus = document.querySelector("#imgIdMinus");
 const imgIdPlus = document.querySelector("#imgIdPlus");
 
@@ -29,6 +31,18 @@ async function pegarMercadorias() {
   const mercadoriaUrl = queryUrl.search.slice(15);
   let limparUrl = mercadoriaUrl.replaceAll("%20%20", " ");
   limparUrl = mercadoriaUrl.replaceAll("%20", " ");
+
+  if (limparUrl !== "PIZZAS") {
+    const spanIdQuantidade = document.querySelector("#quantidade > span");
+    spanIdQuantidade.remove();
+
+    const btnAdicionar = document.querySelector("#quantidade > button");
+    btnAdicionar.style.width = "100%";
+  } else {
+    const linkVoltar = document.querySelector("header > a");
+    console.log(linkVoltar);
+    linkVoltar.setAttribute("href", "./pizza.php");
+  }
 
   tituloPagina.innerText = limparUrl;
   main.append(tituloPagina);
@@ -70,8 +84,6 @@ async function pegarMercadorias() {
       btnComplemeto.innerText = "COMPLEMENTOS";
 
       divDescricao.append(spanDescricao, spanQuantidade);
-
-      //
 
       if (mercadoria.RequerComplemento === "S") {
         divComplemento.append(btnComplemeto);

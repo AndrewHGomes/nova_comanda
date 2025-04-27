@@ -23,12 +23,18 @@
 
   </main>
   <footer>
-    <div id="quantidade">
-      <img src="./img/minus.png" id="imgIdMinus">
-      <input type="number" value="1" id="inputIdQuantidade" disabled>
-      <img src="./img/plus.png" id="imgIdPlus">
+    <div id="infoCliente">
+      <input type="text" placeholder="CLIENTE">
+      <textarea rows="1" name="observacoes" id="observacoes" placeholder="OBSERVAÇÕES"></textarea>
     </div>
-    <button>ADICIONAR</button>
+    <div id="quantidade">
+      <span>
+        <img src="./img/minus.png" id="imgIdMinus">
+        <input type="number" value="1" id="inputIdQuantidade" disabled>
+        <img src="./img/plus.png" id="imgIdPlus">
+      </span>
+      <button>ADICIONAR</button>
+    </div>
   </footer>
 </body>
 

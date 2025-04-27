@@ -27,9 +27,9 @@
       <img src="img/refresh.png" id="img-refresh">
     </a>
 
-    <img src="img/loading.gif" id="loading">
-
   </form>
+
+  <img src="img/loading.gif" id="loading">
 
   <div id="empresa">
     <img src="./img/daffari.jpeg" id="logo">

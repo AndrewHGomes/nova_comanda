@@ -35,10 +35,14 @@ async function pegarCategorias() {
   const categoriasDiv = document.querySelectorAll(".divCategoria");
 
   categoriasDiv.forEach((cadaCategoria, i) => {
-    cadaCategoria.addEventListener("click", (e) => {
+    cadaCategoria.addEventListener("click", () => {
       const nomeCategoria = categorias[i].Descricao;
 
-      location.href = `./mercadorias.php?nomecategoria=${nomeCategoria}`;
+      if (categorias[i].Descricao === "PIZZAS") {
+        location.href = "./pizza.php";
+      } else {
+        location.href = `./mercadorias.php?nomecategoria=${nomeCategoria}`;
+      }
     });
   });
 }
