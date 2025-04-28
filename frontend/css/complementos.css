@@ -54,17 +54,11 @@ main h3 {
 }
 
 .divComplemento div {
-  padding: 0.5em 0.2em;
-}
-
-.divInfo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 0.5em;
 }
 
 .spanComplemento {
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .spanAdicionar {
@@ -86,6 +80,12 @@ main h3 {
   text-align: center;
   border: none;
   outline: none;
+}
+
+.divPreco {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .divPreco span {

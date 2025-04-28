@@ -23,6 +23,7 @@ async function pegarComplementos() {
     spanAdicionar.setAttribute("class", "spanAdicionar");
 
     const imgMinus = document.createElement("img");
+    imgMinus.setAttribute("class", "imgMinus");
     imgMinus.setAttribute("src", "./img/minus.png");
 
     const inputQtdComplemento = document.createElement("input");
@@ -31,6 +32,7 @@ async function pegarComplementos() {
     inputQtdComplemento.value = 0;
 
     const imgPlus = document.createElement("img");
+    imgPlus.setAttribute("class", "imgPlus");
     imgPlus.setAttribute("src", "./img/plus.png");
 
     const divPreco = document.createElement("div");
@@ -40,10 +42,30 @@ async function pegarComplementos() {
     spanPreco.innerText = `R$ ${Number(complemento.Venda).toFixed(2)}`;
 
     spanAdicionar.append(imgMinus, inputQtdComplemento, imgPlus);
-    divInfo.append(spanComplemento, spanAdicionar);
-    divPreco.append(spanPreco);
+    divInfo.append(spanComplemento);
+    divPreco.append(spanPreco, spanAdicionar);
     divComplemento.append(divInfo, divPreco);
     main.append(divComplemento);
+  });
+
+  const quantidadeComplemento = document.querySelectorAll(
+    ".inputQtdComplemento"
+  );
+
+  const imagemMinus = document.querySelectorAll(".imgMinus");
+  imagemMinus.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      if (quantidadeComplemento[i].value > 0) {
+        quantidadeComplemento[i].value--;
+      }
+    });
+  });
+
+  const imagemPlus = document.querySelectorAll(".imgPlus");
+  imagemPlus.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      quantidadeComplemento[i].value++;
+    });
   });
 }
 
