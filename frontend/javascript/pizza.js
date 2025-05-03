@@ -6,23 +6,43 @@ async function pegarPizza() {
     throw new Error("Erro:", resposta.status);
   }
 
-  const pizzas = await resposta.json();
+  const tudo = await resposta.json();
 
-  pizzas.forEach((tipo, i) => {
-    if (tipo.Grupo === 2) {
-      const tipoDePizza = tipo.categoria;
+  const queryUrl = new URL(location.href);
+  const pizzasUrl = queryUrl.search.slice(13);
+  let limparUrlPizza = pizzasUrl.replaceAll("%20", " ");
 
+  tudo.forEach((produto, i) => {
+    const codigoGrupo = produto.Grupo;
+    const nomeCategoria = produto.Descricao;
+
+    if (codigoGrupo === 2 && limparUrlPizza === "PIZZAS") {
       const divPizza = document.createElement("div");
       divPizza.setAttribute("class", "divPizza");
 
       const textoDescricao = document.createElement("p");
-      textoDescricao.innerText = tipo.Descricao;
+      textoDescricao.innerText = produto.Descricao;
 
       divPizza.append(textoDescricao);
       main.append(divPizza);
 
       divPizza.addEventListener("click", () => {
-        location.href = `./mercadorias.php?nomecategoria=${tipoDePizza}`;
+        location.href = `./mercadorias.php?nomecategoria=${nomeCategoria}`;
+      });
+    }
+
+    if (codigoGrupo === 4 && limparUrlPizza === "PIZZAS MISTAS") {
+      const divPizza = document.createElement("div");
+      divPizza.setAttribute("class", "divPizza");
+
+      const textoDescricao = document.createElement("p");
+      textoDescricao.innerText = produto.Descricao;
+
+      divPizza.append(textoDescricao);
+      main.append(divPizza);
+
+      divPizza.addEventListener("click", () => {
+        location.href = `./mercadorias.php?nomecategoria=${nomeCategoria}`;
       });
     }
   });

@@ -31,6 +31,10 @@ $mercadorias = new Mercadorias;
 
 $mercadorias->pegarMercadorias();
 
+if (isset($_GET['tipoDePizza'])) {
+  $tipoDePizza = $_GET['tipoDePizza'];
+}
+
 if (isset($_GET['nomecategoria'])) {
   $nomeCategoria = $_GET['nomecategoria'];
 }

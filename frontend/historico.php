@@ -13,7 +13,11 @@
 
 <body>
   <header>
-    <h3>HISTÓRICO DA COMANDA <span>5</span></h3>
+    <a href="./index.php">
+      <img src="./img/home2.png" alt="">
+    </a>
+    <h3>HISTÓRICO DA COMANDA</h3>
+    <span>5</span>
   </header>
   <main></main>
   <footer>

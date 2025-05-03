@@ -1,5 +1,34 @@
 <?php
 
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+header("Content-Type: application/json");
+
+class Conexao
+{
+  public $pdo;
+
+  public function __construct()
+  {
+    date_default_timezone_set("America/Fortaleza");
+    $this->conectar();
+  }
+
+  public function conectar()
+  {
+    try {
+      $this->pdo = new PDO("mysql:host=127.0.0.1;dbname=sicomercio_fornalha;charset=latin1", "root", "");
+      $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  }
+}
+
+
+
 require_once "Conexao.php";
 
 class Login extends Conexao
@@ -34,16 +63,15 @@ class Login extends Conexao
         $retornos[] = [
           'Nome' => strtoupper($nomeDescriptografado),
           'Senha' => strtoupper($senhaDescriptografado),
-          // 'Codigo' => $dados['Codigo'],
-          // 'Permitido' => $dados['permitido']
+          'Codigo' => $dados['Codigo'],
+          'Permitido' => $dados['permitido']
         ];
 
         $nomeDescriptografado = '';
         $senhaDescriptografado = '';
       }
 
-
-      echo json_encode($retornos);
+      print_r(json_encode($retornos));
     } catch (PDOException $e) {
       echo $e->getMessage();
     }

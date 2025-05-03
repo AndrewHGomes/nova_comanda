@@ -18,11 +18,14 @@ class Conexao
   public function conectar()
   {
     try {
-      $this->pdo = new PDO("mysql:host=127.0.0.1;dbname=sicomercio_fornalha;charset=utf8", "root", "");
+      $this->pdo = new PDO("mysql:host=127.0.0.1;dbname=sicomercio_teste;charset=latin1", "root", "");
       $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+      $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
       echo $e->getMessage();
     }
   }
 }
+
+$conexao = new Conexao;
+$conexao->conectar();

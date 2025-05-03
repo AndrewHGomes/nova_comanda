@@ -37,9 +37,10 @@ async function pegarCategorias() {
   categoriasDiv.forEach((cadaCategoria, i) => {
     cadaCategoria.addEventListener("click", () => {
       const nomeCategoria = categorias[i].Descricao;
+      const tipoDePizza = categorias[i].Descricao;
 
-      if (categorias[i].Descricao === "PIZZAS") {
-        location.href = "./pizza.php";
+      if (categorias[i].Codigo === 1 || categorias[i].Codigo === 2) {
+        location.href = `./pizza.php?tipoDePizza=${tipoDePizza}`;
       } else {
         location.href = `./mercadorias.php?nomecategoria=${nomeCategoria}`;
       }

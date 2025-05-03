@@ -60,9 +60,17 @@ async function pegarTipoComanda() {
       }
 
       const mesasComandas = document.querySelectorAll(".comandaMesa");
+      let mesaAnterior = null;
 
       mesasComandas.forEach((cadaMesa) => {
         cadaMesa.addEventListener("click", () => {
+          if (mesaAnterior) {
+            mesaAnterior.style.background = "";
+          }
+
+          cadaMesa.style.background = "#080";
+          mesaAnterior = cadaMesa;
+
           comandaSelecionada.innerText = cadaMesa.innerText;
         });
       });

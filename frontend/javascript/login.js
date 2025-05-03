@@ -4,19 +4,21 @@ const inputSenha = document.querySelector("#senha");
 
 async function pegarUsuarios() {
   try {
-    const resposta = await fetch("../server/Login.php");
+    const resposta = await fetch("../server/Login.php?pegarUsuarios");
+    console.log(resposta);
     if (!resposta.ok) {
       throw new Error("Erro:", resposta.status);
     }
 
     usuarios = await resposta.json();
+    console.log(usuarios);
 
-    usuarios.forEach((usuario) => {
-      const optionUsuario = document.createElement("option");
-      optionUsuario.setAttribute("value", usuario.Nome);
-      optionUsuario.innerText = usuario.Nome;
-      selectUsuario.append(optionUsuario);
-    });
+    // usuarios.forEach((usuario) => {
+    //   const optionUsuario = document.createElement("option");
+    //   optionUsuario.setAttribute("value", usuario.Nome);
+    //   optionUsuario.innerText = usuario.Nome;
+    //   selectUsuario.append(optionUsuario);
+    // });
   } catch (erro) {
     console.log("Ocorreu um erro:", erro);
   }
