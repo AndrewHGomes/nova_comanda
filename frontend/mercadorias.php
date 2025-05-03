@@ -13,14 +13,14 @@
 
 <body>
   <header>
-    <a href="./categorias.php">
+    <a href="javascript:history.back()">
       <img src="./img/voltar.png">
     </a>
     <input type="text" id="pesquisarMercadoria" placeholder="PESQUISAR PRODUTO">
-    <span>1/1</span>
+    <span class="invisivel">1/1</span>
   </header>
   <main>
-
+    <h3></h3>
   </main>
   <footer>
     <div id="infoCliente">
@@ -28,7 +28,7 @@
       <textarea rows="1" name="observacoes" id="observacoes" placeholder="OBSERVAÇÕES"></textarea>
     </div>
     <div id="quantidade">
-      <span>
+      <span class="invisivel">
         <img src="./img/minus.png" id="imgIdMinus">
         <input type="number" value="1" id="inputIdQuantidade" disabled>
         <img src="./img/plus.png" id="imgIdPlus">

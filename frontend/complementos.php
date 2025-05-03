@@ -13,7 +13,7 @@
 
 <body>
   <header>
-    <a href="./categorias.php">
+    <a href="javascript:history.back()">
       <img src="./img/voltar.png">
     </a>
     <input type="text" id="pesquisarComplemento" placeholder="PESQUISAR COMPLEMENTO">

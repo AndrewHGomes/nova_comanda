@@ -14,7 +14,7 @@
 <body>
   <h1>SICOMANDA</h1>
 
-  <a href="./inicio.php">VOLTAR</a>
+  <a href="./index.php">VOLTAR</a>
 
   <form method="POST" action="">
 

@@ -6,7 +6,7 @@ header {
   top: 0;
   padding: 0.5em;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-around;
 }
 
@@ -18,7 +18,7 @@ header a {
 header a img {
   width: 100%;
   border-radius: 50%;
-  box-shadow: 3px 3px 8px #000;
+  box-shadow: 2px 2px 6px #000;
 }
 
 header input {
@@ -29,7 +29,7 @@ header input {
   border-radius: 2px;
   text-align: center;
   text-transform: uppercase;
-  box-shadow: 3px 3px 8px #000;
+  box-shadow: 2px 2px 6px #000;
 }
 
 main {
@@ -47,7 +47,7 @@ main {
 }
 
 .divPizza:nth-child(even) {
-  background-color: #bbb;
+  background-color: #ddd;
 }
 
 footer {

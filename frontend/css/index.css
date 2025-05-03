@@ -1,31 +1,55 @@
+header,
+.visivel,
+#selecionada,
+main,
+.comandaCliente,
+.comandaMesa {
+  display: flex;
+}
+
+#img-menu,
+#selecionada,
+.visivel,
+.comandaCliente,
+.comandaMesa {
+  cursor: pointer;
+}
+
+#img-menu,
+#selecionada {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+}
+
+.comandaCliente,
+.comandaMesa {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #000;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  text-align: center;
+}
+
 header {
   width: 100%;
   background-color: #333;
   position: fixed;
   top: 0;
   padding: 0.5em;
-  display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 header h2 {
-  padding: 0.3em 0.5em;
+  padding: 0.3em;
   font-weight: normal;
 }
 
 header h2 a {
   text-decoration: none;
   color: #fff;
-}
-
-#img-menu {
-  cursor: pointer;
-  background-color: #fff;
-  width: 2.5em;
-  height: 2.5em;
-  border-radius: 50%;
-  box-shadow: 3px 3px 8px #000;
 }
 
 .invisivel {
@@ -39,8 +63,6 @@ header h2 a {
   padding: 1em;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
-  cursor: pointer;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -54,15 +76,9 @@ header h2 a {
 }
 
 #selecionada {
-  width: 2.5em;
-  height: 2.5em;
-  border-radius: 50%;
   background-color: #c00;
-  display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 3px 3px 8px #000;
-  cursor: pointer;
   font-weight: bold;
   color: #fff;
 }
@@ -73,46 +89,27 @@ main {
   padding-top: 5em;
   padding-bottom: 5em;
   scroll-behavior: auto;
-  display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 0.5em;
 }
 
-.comandaCliente,
-.comandaMesa {
-  background-color: #444;
-  color: #fff;
-  width: 5em;
-  height: 5em;
-  padding: 0.5em;
-  border: 1px solid #000;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  display: flex;
+.comandaCliente {
+  width: 6.5em;
+  height: 6em;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  gap: 0.5em;
-  box-shadow: 3px 3px 8px #000;
+  font-size: 0.8em;
 }
 
 .comandaMesa {
+  width: 4.5em;
+  height: 4.5em;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-}
-
-.comandaCliente p,
-.comandaMesa p {
-  text-align: center;
-}
-
-.comandaCliente p {
-  font-size: 0.9em;
-}
-
-.comandaMesa p {
   font-weight: bold;
-  font-size: 1em;
 }
 
 footer {
@@ -127,4 +124,11 @@ footer {
 footer h3 {
   font-weight: normal;
   color: #fff;
+}
+
+#img-menu,
+#selecionada,
+.comandaCliente,
+.comandaMesa {
+  box-shadow: 2px 2px 6px #000;
 }

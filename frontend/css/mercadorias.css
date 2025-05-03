@@ -1,13 +1,20 @@
+header span,
+img,
+button,
+textarea {
+  box-shadow: 2px 2px 6px #000;
+}
+
 header {
+  width: 100%;
   background-color: #333;
   color: #fff;
-  width: 100%;
   position: fixed;
   top: 0;
   padding: 0.5em;
   display: flex;
-  align-items: start;
-  justify-content: space-between;
+  align-items: flex-start;
+  justify-content: space-around;
 }
 
 header a {
@@ -18,162 +25,166 @@ header a {
 header a img {
   width: 100%;
   border-radius: 50%;
-  box-shadow: 3px 3px 8px #000;
 }
 
 header input {
-  width: 70%;
+  width: 80%;
   padding: 0.5em;
-  outline: none;
-  border: none;
-  border-radius: 2px;
   text-align: center;
-  text-transform: uppercase;
-  box-shadow: 3px 3px 8px #000;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 2px 2px 6px #000;
 }
 
 header span {
-  background-color: #a00;
+  background-color: #c00;
   padding: 0.4em;
   border-radius: 2px;
-  box-shadow: 3px 3px 8px #000;
 }
 
 main {
-  padding-top: 2.8em;
-  padding-bottom: 7em;
+  padding-top: 3em;
+  padding-bottom: 10.5em;
   scroll-behavior: auto;
 }
 
 main h3 {
   background-color: #333;
-  color: #0f0;
-  text-align: center;
+  color: #fff;
   padding: 0.5em;
+  text-align: center;
 }
 
-.divMercadoria {
-  padding: 0.5em;
+main .divMercadoria {
+  padding: 1em 0.5em;
   display: flex;
   flex-direction: column;
+  gap: 1em;
 }
 
-.divMercadoria:nth-child(odd) {
-  background-color: #bbb;
+main .divMercadoria:nth-child(odd) {
+  background-color: #ddd;
 }
 
-.divMercadoria:nth-child(even) {
+main .divMercadoria:nth-child(even) {
   background-color: #eee;
 }
 
 .divDescricao,
 .divComplemento {
-  padding: 0.3em 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.spanQuantidade {
+.divDescricao .spanQuantidade {
   display: flex;
   align-items: center;
-}
-
-.spanQuantidade img {
-  width: 1.5em;
-  border-radius: 50%;
-  box-shadow: 1px 1px 4px #000;
 }
 
 .spanQuantidade input {
   background-color: transparent;
-  width: 1.5em;
+  width: 1em;
   margin: 0 0.5em;
-  font-size: 1.1em;
-  font-weight: bold;
   text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
   border: none;
   outline: none;
+  text-align: center;
 }
 
-.btnComplemento {
+main img {
+  width: 1.5em;
+  border-radius: 50%;
+}
+
+.divComplemento button {
   background-color: #080;
   color: #fff;
-  padding: 0.3em 0.5em;
-  outline: none;
-  border: none;
+  padding: 0.3em 0.6em;
   font-size: 1em;
+  border: none;
+  outline: none;
   border-radius: 2px;
-  box-shadow: 1px 1px 4px #000;
 }
 
 footer {
   background-color: #333;
-  width: 100%;
-  padding: 0.5em;
+  color: #fff;
   position: fixed;
   bottom: 0;
+  width: 100%;
+  padding: 0.8em 0.5em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.8em;
+}
+
+footer img {
+  width: 1.6em;
+  border-radius: 50%;
 }
 
 footer div {
   width: 100%;
-  padding: 0.5em 0;
   display: flex;
 }
 
 #infoCliente {
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.8em;
 }
 
 #infoCliente input,
 #infoCliente textarea {
-  width: 48%;
   padding: 0.5em;
-  outline: none;
-  border: none;
-  border-radius: 2px;
+  font-size: 1em;
   text-align: center;
-  text-transform: uppercase;
-  box-shadow: 3px 3px 8px #000;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 2px 2px 6px #000;
 }
 
 #quantidade {
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-#quantidade img {
-  width: 1.6em;
-  border-radius: 50%;
-  box-shadow: 3px 3px 8px #000;
+#quantidade span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #quantidade input {
   background-color: transparent;
   color: #fff;
-  width: 1.5em;
-  margin: 0 0.5em;
-  font-weight: bold;
+  width: 1em;
   text-align: center;
-  font-size: 1.6em;
-  outline: none;
   border: none;
+  outline: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 1em;
 }
 
-footer button {
-  padding: 0.5em;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  text-align: center;
-  outline: none;
-  border: none;
-  font-size: 1em;
+#quantidade button {
+  width: 100%;
   background-color: #080;
-  font-weight: bold;
   color: #fff;
-  box-shadow: 3px 3px 8px #000;
+  padding: 0.5em 2em;
+  border-radius: 2px;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+header .invisivel,
+#quantidade .invisivel {
+  display: none;
 }

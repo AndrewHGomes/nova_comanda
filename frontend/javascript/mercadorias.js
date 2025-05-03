@@ -1,4 +1,4 @@
-const tituloPagina = document.createElement("h3");
+const tituloPagina = document.querySelector("main > h3");
 
 const main = document.querySelector("main");
 
@@ -32,22 +32,16 @@ async function pegarMercadorias() {
   let limparUrl = mercadoriaUrl.replaceAll("%20%20", " ");
   limparUrl = mercadoriaUrl.replaceAll("%20", " ");
 
-  if (limparUrl !== "PIZZAS") {
-    const spanIdQuantidade = document.querySelector("#quantidade > span");
-    spanIdQuantidade.remove();
+  tituloPagina.innerText = limparUrl;
 
-    const btnAdicionar = document.querySelector("#quantidade > button");
-    btnAdicionar.style.width = "100%";
-  } else {
-    const linkVoltar = document.querySelector("header > a");
-    linkVoltar.setAttribute("href", "./pizza.php");
+  if (limparUrl === "PIZZAS") {
+    document.querySelector("header > span").removeAttribute("class");
+    document.querySelector("header > input").style.width = "70%";
+    document.querySelector("#quantidade > span").removeAttribute("class");
+    document.querySelector("#quantidade > button").style.width = "50%";
   }
 
-  tituloPagina.innerText = limparUrl;
-  main.append(tituloPagina);
-
   mercadorias.forEach((mercadoria) => {
-    console.log(mercadoria.Grupo);
     if (mercadoria.categoria === limparUrl && mercadoria.Complemento === "N") {
       const divMercadoria = document.createElement("div");
       divMercadoria.setAttribute("class", "divMercadoria");
