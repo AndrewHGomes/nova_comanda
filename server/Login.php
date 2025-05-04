@@ -1,5 +1,7 @@
 <?php
 
+header("Content-Type: application/json");
+
 require_once "Conexao.php";
 
 class Login extends Conexao
@@ -13,37 +15,31 @@ class Login extends Conexao
   {
     try {
       $sql = $this->pdo->prepare("SELECT funcionarios.Codigo, funcionarios.Nome, funcionarios.Senha, permissoes.utilizarSicomanda20 AS permitido FROM funcionarios INNER JOIN permissoes ON (permissoes.idFuncionario = funcionarios.Codigo) WHERE funcionarios.ativo = 'Y'");
-
       $sql->execute();
-
       $array = $sql->fetchAll(\PDO::FETCH_ASSOC);
 
       $retornos = [];
-      $nomeDescriptografado = "";
-      $senhaDescriptografado = "";
 
       foreach ($array as $dados) {
+        $nome = '';
         for ($i = 0; $i <= strlen($dados['Nome']) - 1; $i++) {
-          $nomeDescriptografado .= chr(~(ord($dados['Nome'][$i]) - 10));
+          $nome .= chr(~(ord($dados['Nome'][$i]) - 10));
         }
 
+        $senha = '';
         for ($i = 0; $i <= strlen($dados['Senha']) - 1; $i++) {
-          $senhaDescriptografado .= chr(~(ord($dados['Senha'][$i]) - 10));
+          $senha .= chr(~(ord($dados['Senha'][$i]) - 10));
         }
 
         $retornos[] = [
-          'Nome' => strtoupper($nomeDescriptografado),
-          'Senha' => strtoupper($senhaDescriptografado),
-          // 'Codigo' => $dados['Codigo'],
-          // 'Permitido' => $dados['permitido']
+          'Nome' => strtoupper($nome),
+          'Senha' => strtoupper($senha),
+          'Codigo' => $dados['Codigo'],
+          'Permitido' => $dados['permitido']
         ];
-
-        $nomeDescriptografado = '';
-        $senhaDescriptografado = '';
       }
 
-
-      echo json_encode($retornos);
+      print_r(json_encode($retornos));
     } catch (PDOException $e) {
       echo $e->getMessage();
     }

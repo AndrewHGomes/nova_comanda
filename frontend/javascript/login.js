@@ -4,7 +4,7 @@ const inputSenha = document.querySelector("#senha");
 
 async function pegarUsuarios() {
   try {
-    const resposta = await fetch("../server/Login.php?pegarUsuarios");
+    const resposta = await fetch("../server/Login.php");
     console.log(resposta);
     if (!resposta.ok) {
       throw new Error("Erro:", resposta.status);
