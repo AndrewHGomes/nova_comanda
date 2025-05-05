@@ -1,14 +1,14 @@
 <?php
 
-header("Content-Type: application/json");
-
 require_once "Conexao.php";
 
 class Login extends Conexao
 {
+  private $pdo;
+
   public function __construct()
   {
-    parent::__construct();
+    $this->pdo = Conexao::conexaLatin1();
   }
 
   public function pegarUsuarios()
@@ -16,7 +16,8 @@ class Login extends Conexao
     try {
       $sql = $this->pdo->prepare("SELECT funcionarios.Codigo, funcionarios.Nome, funcionarios.Senha, permissoes.utilizarSicomanda20 AS permitido FROM funcionarios INNER JOIN permissoes ON (permissoes.idFuncionario = funcionarios.Codigo) WHERE funcionarios.ativo = 'Y'");
       $sql->execute();
-      $array = $sql->fetchAll(\PDO::FETCH_ASSOC);
+
+      $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
 
       $retornos = [];
 
@@ -37,6 +38,9 @@ class Login extends Conexao
           'Codigo' => $dados['Codigo'],
           'Permitido' => $dados['permitido']
         ];
+
+        $nome = '';
+        $senha = '';
       }
 
       print_r(json_encode($retornos));

@@ -4,9 +4,11 @@ require_once "Conexao.php";
 
 class Sabores extends Conexao
 {
+  private $pdo;
+
   public function __construct()
   {
-    parent::__construct();
+    $this->pdo = Conexao::conexaoUtf8();
   }
 
   public function pegarSabores()

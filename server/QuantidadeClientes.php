@@ -4,9 +4,11 @@ require 'Conexao.php';
 
 class QuantidadeClientes extends Conexao
 {
+  private $pdo;
+
   public function __construct()
   {
-    parent::__construct();
+    $this->pdo = Conexao::conexaoUtf8();
   }
 
   public function inserirClientes($quantidade, $mesa)

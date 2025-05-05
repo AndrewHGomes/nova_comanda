@@ -1,60 +1,117 @@
-let usuarios;
-const selectUsuario = document.querySelector("#usuario");
-const inputSenha = document.querySelector("#senha");
-
 async function pegarUsuarios() {
-  try {
-    const resposta = await fetch("../server/Login.php");
-    console.log(resposta);
-    if (!resposta.ok) {
-      throw new Error("Erro:", resposta.status);
-    }
+  const resposta = await fetch("../server/Login.php");
 
-    usuarios = await resposta.json();
-    console.log(usuarios);
-
-    // usuarios.forEach((usuario) => {
-    //   const optionUsuario = document.createElement("option");
-    //   optionUsuario.setAttribute("value", usuario.Nome);
-    //   optionUsuario.innerText = usuario.Nome;
-    //   selectUsuario.append(optionUsuario);
-    // });
-  } catch (erro) {
-    console.log("Ocorreu um erro:", erro);
-  }
+  const usuarios = await resposta.json();
+  sessionStorage.setItem("usuarios", JSON.stringify(usuarios));
 }
 
-pegarUsuarios();
+//==============================================================
 
-const logado = [];
+async function pegarCategorias() {
+  const resposta = await fetch("../server/Categorias.php?pegarCategorias");
 
-const btnEntrar = document.querySelector("#enter");
-btnEntrar.addEventListener("click", (e) => {
+  const categorias = await resposta.json();
+  sessionStorage.setItem("categorias", JSON.stringify(categorias));
+}
+
+//==============================================================
+
+async function pegarComplementos() {
+  const resposta = await fetch("../server/Complementos.php?pegarComplementos");
+
+  const complementos = await resposta.json();
+  sessionStorage.setItem("complementos", JSON.stringify(complementos));
+}
+
+//==============================================================
+
+async function pegarGrupoComplemento() {
+  const resposta = await fetch(
+    "../server/GrupoComplemento.php?pegarGrupoComplemento"
+  );
+
+  const grupoComplemento = await resposta.json();
+  sessionStorage.setItem("grupoComplemento", JSON.stringify(grupoComplemento));
+}
+
+//==============================================================
+
+async function pegarMercadorias() {
+  const resposta = await fetch("../server/Mercadorias.php?pegarMercadorias");
+
+  const mercadorias = await resposta.json();
+  sessionStorage.setItem("mercadorias", JSON.stringify(mercadorias));
+}
+
+//==============================================================
+
+async function mostrarTotalHistoricoComanda() {
+  const resposta = await fetch(
+    "../server/MostrarTotalHistoricoComanda.php?mostrarTotalHistoricoComanda"
+  );
+
+  const historicoComanda = await resposta.json();
+  sessionStorage.setItem("historicoComanda", JSON.stringify(historicoComanda));
+}
+
+//==============================================================
+
+async function obterParametroFracao() {
+  const resposta = await fetch(
+    "../server/ObterParametroFracao.php?obterParametroFracao"
+  );
+
+  const parametroFracao = await resposta.json();
+  sessionStorage.setItem("parametroFracao", JSON.stringify(parametroFracao));
+}
+
+//==============================================================
+
+async function pegarSabores() {
+  const resposta = await fetch("../server/Sabores.php?pegarSabores");
+
+  const sabores = await resposta.json();
+  sessionStorage.setItem("sabores", JSON.stringify(sabores));
+}
+
+//==============================================================
+
+async function pegarTaxaEntrega() {
+  const resposta = await fetch("../server/TaxaEntrega.php?pegarTaxaEntrega");
+
+  const taxaEntrega = await resposta.json();
+  sessionStorage.setItem("taxaEntrega", JSON.stringify(taxaEntrega));
+}
+
+//==============================================================
+
+async function sincronizar() {
+  await Promise.all([
+    console.log("SINCRONIZANDO..."),
+    pegarUsuarios(),
+    pegarCategorias(),
+    pegarComplementos(),
+    pegarGrupoComplemento(),
+    pegarMercadorias(),
+    mostrarTotalHistoricoComanda(),
+    obterParametroFracao(),
+    pegarSabores(),
+    pegarTaxaEntrega(),
+  ]);
+}
+
+//==============================================================
+
+const btnEnter = document.querySelector("#btnEnter");
+
+btnEnter.addEventListener("click", (e) => {
   e.preventDefault();
+  sincronizar();
 
-  const usuario = selectUsuario.value;
-  const senha = inputSenha.value;
+  let usuarios = sessionStorage.getItem("usuarios");
+  usuarios = JSON.parse(usuarios);
 
-  // usuarios.forEach((user) => {
-  //   console.log(user);
-  //   // if (
-  //   //   user.Nome.toLowerCase() === usuario &&
-  //   //   user.Senha.toLowerCase() === senha &&
-  //   //   user.Permitido === "S"
-  //   // ) {
-  //   //   logado.push(user);
-  //   // }
-  // });
-
-  selectUsuario.value = "";
-  inputSenha.value = "";
-
-  const loading = document.querySelector("#loading");
-
-  loading.style.display = "block";
-
-  setTimeout(() => {
-    loading.style.display = "none";
-    location.href = "index.php";
-  }, 2000);
+  usuarios.forEach((usuario) => {
+    console.log(usuario);
+  });
 });

@@ -20,8 +20,8 @@
       <option value="">SELECIONE UM USUARIO</option>
     </select>
 
-    <input type="password" placeholder="SENHA" id="senha" autocomplete="off" placeholder="SENHA">
-    <button id="enter">ACESSAR</button>
+    <input type="password" id="senha" placeholder="SENHA">
+    <button id="btnEnter">ACESSAR</button>
 
     <a href="login.php" id="refresh">
       <img src="img/refresh.png" id="img-refresh">

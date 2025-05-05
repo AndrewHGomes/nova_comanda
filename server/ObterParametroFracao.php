@@ -4,9 +4,11 @@ require_once "Conexao.php";
 
 class ObterParametroFracao extends Conexao
 {
+  private $pdo;
+
   public function __construct()
   {
-    parent::__construct();
+    $this->pdo = Conexao::conexaoUtf8();
   }
 
   public function obterParametroFracao()
