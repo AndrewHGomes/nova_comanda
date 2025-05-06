@@ -1,9 +1,9 @@
-async function pegarUsuarios() {
-  const resposta = await fetch("../server/Login.php");
+// async function pegarUsuarios() {
+//   const resposta = await fetch("../server/Login.php?pegarUsuarios");
 
-  const usuarios = await resposta.json();
-  sessionStorage.setItem("usuarios", JSON.stringify(usuarios));
-}
+//   const usuarios = await resposta.json();
+//   sessionStorage.setItem("usuarios", JSON.stringify(usuarios));
+// }
 
 //==============================================================
 
@@ -85,20 +85,20 @@ async function pegarTaxaEntrega() {
 
 //==============================================================
 
-async function sincronizar() {
-  await Promise.all([
-    console.log("SINCRONIZANDO..."),
-    pegarUsuarios(),
-    pegarCategorias(),
-    pegarComplementos(),
-    pegarGrupoComplemento(),
-    pegarMercadorias(),
-    mostrarTotalHistoricoComanda(),
-    obterParametroFracao(),
-    pegarSabores(),
-    pegarTaxaEntrega(),
-  ]);
-}
+// async function sincronizar() {
+//   await Promise.all([
+//     console.log("SINCRONIZANDO..."),
+//     // pegarUsuarios(),
+//     pegarCategorias(),
+//     pegarComplementos(),
+//     pegarGrupoComplemento(),
+//     pegarMercadorias(),
+//     mostrarTotalHistoricoComanda(),
+//     obterParametroFracao(),
+//     pegarSabores(),
+//     pegarTaxaEntrega(),
+//   ]);
+// }
 
 //==============================================================
 
@@ -108,10 +108,23 @@ btnEnter.addEventListener("click", (e) => {
   e.preventDefault();
   sincronizar();
 
-  let usuarios = sessionStorage.getItem("usuarios");
-  usuarios = JSON.parse(usuarios);
+  const selectUsuario = document.getElementById("selectUsuario");
+  const inputSenha = document.getElementById("inputSenha");
+  const imgLoading = document.getElementById("imgLoading");
 
-  usuarios.forEach((usuario) => {
-    console.log(usuario);
-  });
+  console.log(selectUsuario.value);
+  console.log(inputSenha.value);
+
+  imgLoading.style.display = "block";
+  setTimeout(() => {
+    imgLoading.style.display = "none";
+    location.href = "./index.php";
+  }, 2000);
+
+  // let usuarios = sessionStorage.getItem("usuarios");
+  // usuarios = JSON.parse(usuarios);
+
+  // usuarios.forEach((usuario) => {
+  //   console.log(usuario);
+  // });
 });

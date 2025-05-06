@@ -16,11 +16,11 @@
 
   <form method="POST" action="">
 
-    <select id="usuario">
+    <select id="selectUsuario">
       <option value="">SELECIONE UM USUARIO</option>
     </select>
 
-    <input type="password" id="senha" placeholder="SENHA">
+    <input type="password" id="inputSenha" autocomplete="off" placeholder="SENHA">
     <button id="btnEnter">ACESSAR</button>
 
     <a href="login.php" id="refresh">
@@ -29,7 +29,7 @@
 
   </form>
 
-  <img src="img/loading.gif" id="loading">
+  <img src="img/loading.gif" id="imgLoading">
 
   <div id="empresa">
     <img src="./img/daffari.jpeg" id="logo">

@@ -8,7 +8,7 @@ class Login extends Conexao
 
   public function __construct()
   {
-    $this->pdo = Conexao::conexaLatin1();
+    $this->pdo = Conexao::conexaoLatin1();
   }
 
   public function pegarUsuarios()
@@ -44,6 +44,7 @@ class Login extends Conexao
       }
 
       print_r(json_encode($retornos));
+      // var_dump($retornos);
     } catch (PDOException $e) {
       echo $e->getMessage();
     }
