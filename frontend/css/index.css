@@ -76,10 +76,11 @@ header h2 a {
 
 #selecionada {
   background-color: #c00;
+  color: #fff;
+  padding: 0.2em;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: #fff;
 }
 
 main {
@@ -88,7 +89,7 @@ main {
   padding-top: 5em;
   padding-bottom: 5em;
   scroll-behavior: auto;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-wrap: wrap;
   gap: 0.5em;
 }

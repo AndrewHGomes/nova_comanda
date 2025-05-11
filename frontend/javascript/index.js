@@ -50,6 +50,23 @@ async function pegarTipoComanda() {
 
         main.append(comandaCliente);
       });
+
+      const clientesComandas = document.querySelectorAll(".comandaCliente");
+      let clienteAnterior = null;
+
+      clientesComandas.forEach((cadaCliente) => {
+        cadaCliente.addEventListener("click", () => {
+          if (clienteAnterior) {
+            clienteAnterior.style.background = "";
+          }
+
+          cadaCliente.style.background = "#080";
+          clienteAnterior = cadaCliente;
+
+          comandaSelecionada.innerText = cadaCliente.firstChild.innerText;
+          // comandaSelecionada.style.fontSize = "0.8em";
+        });
+      });
     } else if (parametroTipoComanda && parametroTipoComanda === "M") {
       const mesas = dadosLocalStorage[1];
 

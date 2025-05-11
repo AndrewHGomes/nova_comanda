@@ -16,17 +16,19 @@
 
   <a href="./index.php">VOLTAR</a>
 
-  <form method="POST" action="">
+  <form>
 
-    <input type="text" id="codigo-comanda" placeholder="NÚMERO DA COMANDA">
+    <input type="text" id="numero-comanda" placeholder="NÚMERO DA COMANDA">
 
-    <input type="text" id="cliente" placeholder="NOME DO CLIENTE">
+    <input type="text" id="nome-cliente" placeholder="NOME DO CLIENTE">
 
-    <input type="text" id="telefone" placeholder="NÚMERO DE TELEFONE">
+    <input type="text" id="telefone-cliente" placeholder="NÚMERO DE TELEFONE">
 
-    <button id="enviar">ENVIAR</button>
+    <button id="btnSalvarComanda">SALVAR COMANDA</button>
 
   </form>
+
+  <img src="img/loading.gif" id="imgLoading">
 
   <div id="empresa">
     <img src="./img/daffari.jpeg" id="logo">
