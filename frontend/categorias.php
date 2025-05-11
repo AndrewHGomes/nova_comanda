@@ -11,7 +11,7 @@
   <title>CATEGORIAS</title>
 </head>
 
-<body>
+<body onload="pegarCategorias()">
   <header>
     <img src="./img/img-menu.jpg" id="img-menu">
     <div id="menu" class="invisivel">

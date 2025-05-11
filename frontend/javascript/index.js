@@ -18,9 +18,14 @@ async function pegarTipoComanda() {
     if (!resposta.ok) {
       throw new Error("Erro:", resposta.status);
     }
-    const dados = await resposta.json();
+    const arrayTipoComanda = await resposta.json();
 
-    const parametroTipoComanda = dados[0];
+    localStorage.setItem("tipoDeComanda", JSON.stringify(arrayTipoComanda));
+
+    const dadosLocalStorage = JSON.parse(localStorage.getItem("tipoDeComanda"));
+    console.log(dadosLocalStorage);
+
+    const parametroTipoComanda = dadosLocalStorage[0];
 
     if (parametroTipoComanda && parametroTipoComanda === "P") {
       const linkPortaria = document.createElement("a");
@@ -29,7 +34,7 @@ async function pegarTipoComanda() {
 
       menu.appendChild(linkPortaria);
 
-      const clientes = dados[1];
+      const clientes = dadosLocalStorage[1];
 
       clientes.forEach((cliente) => {
         const comandaCliente = document.createElement("div");
@@ -46,7 +51,7 @@ async function pegarTipoComanda() {
         main.append(comandaCliente);
       });
     } else if (parametroTipoComanda && parametroTipoComanda === "M") {
-      const mesas = dados[1];
+      const mesas = dadosLocalStorage[1];
 
       for (let i = 1; i <= mesas.NComandas; i++) {
         const comandaMesa = document.createElement("div");
@@ -87,5 +92,3 @@ async function pegarTipoComanda() {
     console.log("Ocorreu um erro:", erro);
   }
 }
-
-pegarTipoComanda();

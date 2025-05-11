@@ -16,7 +16,11 @@ async function pegarCategorias() {
     throw new Error("Erro:", resposta.status);
   }
 
-  const categorias = await resposta.json();
+  const arrayCategorias = await resposta.json();
+
+  localStorage.setItem("categorias", JSON.stringify(arrayCategorias));
+
+  const categorias = JSON.parse(localStorage.getItem("categorias"));
 
   categorias.forEach((categoria, i) => {
     const divCategoria = document.createElement("div");
@@ -47,5 +51,3 @@ async function pegarCategorias() {
     });
   });
 }
-
-pegarCategorias();

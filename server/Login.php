@@ -4,7 +4,7 @@ require_once "Conexao.php";
 
 class Login extends Conexao
 {
-  private $pdo;
+  public $pdo;
 
   public function __construct()
   {
@@ -18,6 +18,7 @@ class Login extends Conexao
       $sql->execute();
 
       $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
+      echo json_encode($array);
 
       $retornos = [];
 
@@ -43,8 +44,7 @@ class Login extends Conexao
         $senha = '';
       }
 
-      print_r(json_encode($retornos));
-      // var_dump($retornos);
+      // print_r(json_encode($retornos));
     } catch (PDOException $e) {
       echo $e->getMessage();
     }

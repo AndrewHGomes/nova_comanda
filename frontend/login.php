@@ -11,7 +11,7 @@
   <title>LOGIN</title>
 </head>
 
-<body>
+<body onload="pegarUsuarios()">
   <h1>SICOMANDA</h1>
 
   <form method="POST" action="">
