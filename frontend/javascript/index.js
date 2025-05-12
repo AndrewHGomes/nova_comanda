@@ -23,7 +23,6 @@ async function pegarTipoComanda() {
     localStorage.setItem("tipoDeComanda", JSON.stringify(arrayTipoComanda));
 
     const dadosLocalStorage = JSON.parse(localStorage.getItem("tipoDeComanda"));
-    console.log(dadosLocalStorage);
 
     const parametroTipoComanda = dadosLocalStorage[0];
 
@@ -64,7 +63,6 @@ async function pegarTipoComanda() {
           clienteAnterior = cadaCliente;
 
           comandaSelecionada.innerText = cadaCliente.firstChild.innerText;
-          // comandaSelecionada.style.fontSize = "0.8em";
         });
       });
     } else if (parametroTipoComanda && parametroTipoComanda === "M") {
