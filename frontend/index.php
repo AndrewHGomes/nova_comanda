@@ -11,16 +11,21 @@
   <title>INÍCIO</title>
 </head>
 
-<body onload="pegarTipoComanda()">
+<body>
   <header>
-    <img src="./img/img-menu.jpg" id="img-menu">
-    <div id="menu" class="invisivel">
-      <a href="./login.php">ATUALIZAR</a>
+    <div id="topHeader">
+      <img src="./img/img-menu.jpg" id="img-menu">
+      <div id="menu" class="invisivel">
+        <a href="./login.php">ATUALIZAR</a>
+      </div>
+      <h2>
+        <a href="./categorias.php">CATEGORIAS</a>
+      </h2>
+      <div id="selecionada"></div>
     </div>
-    <h2>
-      <a href="./categorias.php">CATEGORIAS</a>
-    </h2>
-    <div id="selecionada"></div>
+    <div id="bottomHeader">
+      <input type="text" placeholder="PESQUISAR COMANDA">
+    </div>
   </header>
   <main></main>
   <footer>

@@ -44,7 +44,7 @@ class Login extends Conexao
         $senha = '';
       }
 
-      // print_r(json_encode($retornos));
+      // echo json_encode($retornos);
     } catch (PDOException $e) {
       echo $e->getMessage();
     }
@@ -52,4 +52,7 @@ class Login extends Conexao
 }
 
 $login = new Login;
-$login->pegarUsuarios();
+
+if (isset($_GET['pegarUsuarios'])) {
+  $login->pegarUsuarios();
+}

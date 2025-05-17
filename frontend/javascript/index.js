@@ -1,109 +1,188 @@
-const imgMenu = document.querySelector("#img-menu");
-const comandaSelecionada = document.querySelector("#selecionada");
+pegarTipoDeComanda();
+headerFuncional();
+montarMainContent();
 
-imgMenu.addEventListener("click", () => {
-  if (menu.className === "invisivel") {
-    menu.className = "visivel";
-  } else {
-    menu.className = "invisivel";
-  }
-});
-
-const menu = document.querySelector("#menu");
-const main = document.querySelector("main");
-
-async function pegarTipoComanda() {
+async function pegarTipoDeComanda() {
   try {
     const resposta = await fetch("../server/TipoDeComanda.php?tipoDeComanda");
     if (!resposta.ok) {
       throw new Error("Erro:", resposta.status);
     }
-    const arrayTipoComanda = await resposta.json();
 
-    localStorage.setItem("tipoDeComanda", JSON.stringify(arrayTipoComanda));
+    const objTipoComanda = await resposta.json();
 
-    const dadosLocalStorage = JSON.parse(localStorage.getItem("tipoDeComanda"));
+    localStorage.setItem("tipoDeComanda", JSON.stringify(objTipoComanda));
+  } catch (erro) {
+    console.log(erro);
+  }
+}
 
-    const parametroTipoComanda = dadosLocalStorage[0];
+//======================================================================================
 
-    if (parametroTipoComanda && parametroTipoComanda === "P") {
-      const linkPortaria = document.createElement("a");
-      linkPortaria.setAttribute("href", "./portaria.php");
-      linkPortaria.innerText = "PORTARIA";
+function headerFuncional() {
+  const verTipoComanda = JSON.parse(localStorage.getItem("tipoDeComanda"));
+  const tipo = verTipoComanda[0];
 
-      menu.appendChild(linkPortaria);
+  const imgMenu = document.querySelector("#img-menu");
+  const menu = document.querySelector("#menu");
 
-      const clientes = dadosLocalStorage[1];
+  imgMenu.addEventListener("click", () => {
+    if (menu.className === "invisivel") {
+      menu.className = "visivel";
+    } else {
+      menu.className = "invisivel";
+    }
+  });
 
-      clientes.forEach((cliente) => {
-        const comandaCliente = document.createElement("div");
-        comandaCliente.setAttribute("class", "comandaCliente");
+  const linkPortaria = document.createElement("a");
+  linkPortaria.setAttribute("href", "./portaria.php");
+  linkPortaria.innerText = "PORTARIA";
 
-        const textoNumeroComanda = document.createElement("p");
-        const textoNomeComanda = document.createElement("p");
+  if (tipo === "C") {
+    menu.appendChild(linkPortaria);
+  }
 
-        textoNumeroComanda.innerText = cliente.CodigoComanda;
-        textoNomeComanda.innerText = cliente.Cliente;
+  pesquisarComandas();
+}
 
-        comandaCliente.append(textoNumeroComanda, textoNomeComanda);
+//======================================================================================
 
-        main.append(comandaCliente);
-      });
+function pesquisarComandas() {
+  const inputPesquisa = document.querySelector("#bottomHeader > input");
 
-      const clientesComandas = document.querySelectorAll(".comandaCliente");
-      let clienteAnterior = null;
+  inputPesquisa.addEventListener("input", () => {
+    const pesquisa = inputPesquisa.value.toUpperCase().trim();
 
-      clientesComandas.forEach((cadaCliente) => {
-        cadaCliente.addEventListener("click", () => {
-          if (clienteAnterior) {
-            clienteAnterior.style.background = "";
-          }
+    const divMain = document.querySelectorAll("main > div");
 
-          cadaCliente.style.background = "#080";
-          clienteAnterior = cadaCliente;
+    divMain.forEach((div) => {
+      const paragrafosDiv = div.querySelectorAll("p");
 
-          comandaSelecionada.innerText = cadaCliente.firstChild.innerText;
-        });
-      });
-    } else if (parametroTipoComanda && parametroTipoComanda === "M") {
-      const mesas = dadosLocalStorage[1];
+      let encontrado = false;
 
-      for (let i = 1; i <= mesas.NComandas; i++) {
-        const comandaMesa = document.createElement("div");
-        comandaMesa.setAttribute("class", "comandaMesa");
+      paragrafosDiv.forEach((paragrafo) => {
+        const texto = paragrafo.innerText.toUpperCase().trim();
 
-        const textoNumeroMesa = document.createElement("p");
-        textoNumeroMesa.innerText = i;
-
-        comandaMesa.append(textoNumeroMesa);
-        main.append(comandaMesa);
-      }
-
-      const mesasComandas = document.querySelectorAll(".comandaMesa");
-      let mesaAnterior = null;
-
-      mesasComandas.forEach((cadaMesa) => {
-        cadaMesa.addEventListener("click", () => {
-          if (mesaAnterior) {
-            mesaAnterior.style.background = "";
-          }
-
-          cadaMesa.style.background = "#080";
-          mesaAnterior = cadaMesa;
-
-          comandaSelecionada.innerText = cadaMesa.innerText;
-        });
-      });
-
-      comandaSelecionada.addEventListener("click", (e) => {
-        if (e.target.innerText === "" || e.target.innerText === undefined) {
-          alert("SELECIONE UMA COMANDA...");
-        } else {
-          location.href = "./historico.php";
+        if (texto.includes(pesquisa)) {
+          encontrado = true;
         }
       });
-    }
-  } catch (erro) {
-    console.log("Ocorreu um erro:", erro);
+
+      if (!encontrado) {
+        div.classList.add("invisivel");
+      } else {
+        div.classList.remove("invisivel");
+      }
+    });
+  });
+}
+
+//======================================================================================
+
+function exibirMesas() {
+  const objMesas = JSON.parse(localStorage.getItem("tipoDeComanda"));
+  const main = document.querySelector("main");
+
+  const quantidadeDeMesas = objMesas[1].NComandas;
+
+  for (let i = 1; i <= quantidadeDeMesas; i++) {
+    const divMesa = document.createElement("div");
+    divMesa.setAttribute("class", "divMesa");
+
+    const texto = document.createElement("p");
+    texto.textContent = i;
+
+    divMesa.append(texto);
+    main.appendChild(divMesa);
   }
+
+  const mesaSelecionada = document.querySelector("#selecionada");
+  const divMesa = document.querySelectorAll(".divMesa");
+  let mesaAnterior = null;
+
+  divMesa.forEach((cadaMesa) => {
+    cadaMesa.addEventListener("click", () => {
+      if (mesaAnterior) {
+        mesaAnterior.style.background = "";
+      }
+
+      cadaMesa.style.background = "#000";
+      mesaAnterior = cadaMesa;
+
+      mesaSelecionada.textContent = cadaMesa.textContent;
+    });
+  });
+}
+
+//======================================================================================
+
+function exibirComandas() {
+  const objComandas = JSON.parse(localStorage.getItem("tipoDeComanda"));
+  const main = document.querySelector("main");
+
+  const arrayDeClientes = objComandas[1];
+
+  arrayDeClientes.forEach((objCliente) => {
+    const nomeCliente = objCliente.Cliente;
+    const codigoComanda = objCliente.CodigoComanda;
+
+    const divComanda = document.createElement("div");
+    divComanda.setAttribute("class", "divComanda");
+
+    const texto1 = document.createElement("p");
+    texto1.textContent = codigoComanda;
+    texto1.style.fontWeight = "bold";
+
+    const texto2 = document.createElement("p");
+    texto2.textContent = nomeCliente;
+
+    divComanda.append(texto1, texto2);
+
+    main.appendChild(divComanda);
+  });
+
+  const comandaSelecionada = document.querySelector("#selecionada");
+  const divComanda = document.querySelectorAll(".divComanda");
+  let comandaAnterior = null;
+
+  divComanda.forEach((cadaComanda) => {
+    cadaComanda.addEventListener("click", () => {
+      if (comandaAnterior) {
+        comandaAnterior.style.background = "";
+      }
+
+      cadaComanda.style.background = "#000";
+      comandaAnterior = cadaComanda;
+
+      comandaSelecionada.textContent = cadaComanda.firstChild.textContent;
+    });
+  });
+}
+
+//======================================================================================
+
+function montarMainContent() {
+  const objParametro = JSON.parse(localStorage.getItem("tipoDeComanda"));
+
+  const tipoDeComanda = objParametro[0];
+
+  if (tipoDeComanda === "M") {
+    exibirMesas();
+  } else if (tipoDeComanda === "C") {
+    exibirComandas();
+  }
+}
+
+//======================================================================================
+
+function storageMesaOuComanda() {
+  const selecionada = document.querySelector("#selecionada");
+
+  selecionada.addEventListener("click", (e) => {
+    if (e.target.innerText === "" || e.target.innerText === undefined) {
+      alert("SELECIONE UMA COMANDA...");
+    } else {
+      location.href = "./historico.php";
+    }
+  });
 }

@@ -1,17 +1,19 @@
 header,
+#topHeader,
+#bottomHeader,
 .visivel,
 #selecionada,
 main,
-.comandaCliente,
-.comandaMesa {
+.divComanda,
+.divMesa {
   display: flex;
 }
 
 #img-menu,
 #selecionada,
 .visivel,
-.comandaCliente,
-.comandaMesa {
+.divComanda,
+.divMesa {
   cursor: pointer;
 }
 
@@ -22,8 +24,8 @@ main,
   border-radius: 50%;
 }
 
-.comandaCliente,
-.comandaMesa {
+.divComanda,
+.divMesa {
   background-color: #333;
   color: #fff;
   border: 1px solid #000;
@@ -37,9 +39,30 @@ header {
   background-color: #333;
   position: fixed;
   top: 0;
-  padding: 0.5em;
+  flex-direction: column;
+}
+
+#topHeader {
   align-items: center;
   justify-content: space-between;
+  padding: 0.4em 0.3em;
+}
+
+#bottomHeader {
+  align-items: center;
+  justify-content: center;
+  padding: 0.4em 0.3em;
+}
+
+#bottomHeader input {
+  width: 15em;
+  padding: 0.3em;
+  font-size: 1em;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  text-transform: uppercase;
 }
 
 header h2 {
@@ -86,7 +109,7 @@ header h2 a {
 main {
   width: 100%;
   padding: 0.5em;
-  padding-top: 5em;
+  padding-top: 7em;
   padding-bottom: 5em;
   scroll-behavior: auto;
   justify-content: space-around;
@@ -94,8 +117,8 @@ main {
   gap: 0.5em;
 }
 
-.comandaCliente {
-  width: 6.5em;
+.divComanda {
+  width: 7em;
   height: 6em;
   flex-direction: column;
   align-items: center;
@@ -103,7 +126,7 @@ main {
   font-size: 0.8em;
 }
 
-.comandaMesa {
+.divMesa {
   width: 4.5em;
   height: 4.5em;
   flex-direction: column;
@@ -126,9 +149,10 @@ footer h3 {
   color: #fff;
 }
 
+#bottomHeader input,
 #img-menu,
 #selecionada,
-.comandaCliente,
-.comandaMesa {
+.divComanda,
+.divMesa {
   box-shadow: 2px 2px 6px #000;
 }

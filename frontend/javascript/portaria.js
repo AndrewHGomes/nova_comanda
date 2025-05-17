@@ -1,7 +1,5 @@
 async function pegarIntervaloComandas() {
-  const resposta = await fetch(
-    "../server/TipoDeComanda.php?pegarIntervaloComandas"
-  );
+  const resposta = await fetch("../server/Portaria.php?pegarIntervaloComandas");
 
   const objIntervaloComandas = await resposta.json();
 
@@ -59,7 +57,7 @@ async function pegarIntervaloComandas() {
 
       console.log(dados);
 
-      fetch("../server/TipoDeComanda.php?dadosComandaCab", {
+      fetch("../server/Portaria.php?dadosComandaCab", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
