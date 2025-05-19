@@ -1,4 +1,6 @@
 header,
+#topHeader,
+#bottomHeader,
 .visivel,
 #selecionada,
 main,
@@ -24,9 +26,30 @@ header {
   background-color: #333;
   position: fixed;
   top: 0;
-  padding: 0.5em;
+  flex-direction: column;
+}
+
+#topHeader {
   align-items: center;
   justify-content: space-between;
+  padding: 0.4em 0.3em;
+}
+
+#bottomHeader {
+  align-items: center;
+  justify-content: center;
+  padding: 0.4em 0.3em;
+}
+
+#bottomHeader input {
+  width: 16em;
+  padding: 0.3em;
+  font-size: 1em;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  text-transform: uppercase;
 }
 
 header h2 {
@@ -72,7 +95,7 @@ header h2 a {
 main {
   width: 100%;
   padding: 0.5em;
-  padding-top: 5em;
+  padding-top: 7em;
   padding-bottom: 4em;
   scroll-behavior: auto;
   align-items: center;
@@ -115,6 +138,7 @@ footer h3 {
   font-weight: normal;
 }
 
+#bottomHeader input,
 #img-menu,
 #selecionada,
 .divCategoria {

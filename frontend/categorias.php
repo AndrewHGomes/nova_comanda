@@ -13,14 +13,19 @@
 
 <body onload="pegarCategorias()">
   <header>
-    <img src="./img/img-menu.jpg" id="img-menu">
-    <div id="menu" class="invisivel">
-      <a href="./login.php">ATUALIZAR</a>
+    <div id="topHeader">
+      <img src="./img/img-menu.jpg" id="img-menu">
+      <div id="menu" class="invisivel">
+        <a href="./login.php" onclick="limparStorage()">ATUALIZAR</a>
+      </div>
+      <h2>
+        <a href="./index.php">INÍCIO</a>
+      </h2>
+      <div id="selecionada"></div>
     </div>
-    <h2>
-      <a href="./index.php">INÍCIO</a>
-    </h2>
-    <div id="selecionada"></div>
+    <div id="bottomHeader">
+      <input type="text" placeholder="PESQUISAR CATEGORIA">
+    </div>
   </header>
   <main></main>
   <footer>

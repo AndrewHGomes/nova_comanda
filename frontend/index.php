@@ -11,12 +11,12 @@
   <title>INÍCIO</title>
 </head>
 
-<body>
+<body onload="pegarTipoDeComanda()">
   <header>
     <div id="topHeader">
       <img src="./img/img-menu.jpg" id="img-menu">
       <div id="menu" class="invisivel">
-        <a href="./login.php">ATUALIZAR</a>
+        <a href="./login.php" onclick="limparStorage()">ATUALIZAR</a>
       </div>
       <h2>
         <a href="./categorias.php">CATEGORIAS</a>

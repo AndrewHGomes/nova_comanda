@@ -1,6 +1,7 @@
-pegarTipoDeComanda();
 headerFuncional();
 montarMainContent();
+
+//======================================================================================
 
 async function pegarTipoDeComanda() {
   try {
@@ -12,6 +13,8 @@ async function pegarTipoDeComanda() {
     const objTipoComanda = await resposta.json();
 
     localStorage.setItem("tipoDeComanda", JSON.stringify(objTipoComanda));
+
+    console.log("Tipo de comanda");
   } catch (erro) {
     console.log(erro);
   }
@@ -185,4 +188,11 @@ function storageMesaOuComanda() {
       location.href = "./historico.php";
     }
   });
+}
+
+//======================================================================================
+
+function limparStorage() {
+  localStorage.clear();
+  sessionStorage.clear();
 }
