@@ -18,7 +18,6 @@ class Login extends Conexao
       $sql->execute();
 
       $array = $sql->rowCount() ? $sql->fetchAll(\PDO::FETCH_ASSOC) : [];
-      echo json_encode($array);
 
       $retornos = [];
 
@@ -44,7 +43,7 @@ class Login extends Conexao
         $senha = '';
       }
 
-      // echo json_encode($retornos);
+      echo json_encode($retornos);
     } catch (PDOException $e) {
       echo $e->getMessage();
     }

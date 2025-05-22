@@ -10,6 +10,11 @@ class Conexao
   public static $pdo_utf8 = null;
   public static $pdo_latin1 = null;
 
+  private static $host = "192.168.1.11";
+  private static $dbname = "sicomercio_trentinnovo";
+  private static $user = "root";
+  private static $password = "";
+
   public function __construct()
   {
     date_default_timezone_set("America/Fortaleza");
@@ -19,7 +24,7 @@ class Conexao
   {
     if (self::$pdo_utf8 === null) {
       try {
-        self::$pdo_utf8 = new PDO("mysql:host=127.0.0.1;dbname=sicomercio_teste;charset=utf8", "root", "");
+        self::$pdo_utf8 = new PDO("mysql:host=" . self::$host . ";dbname=" . self::$dbname . ";charset=utf8", self::$user, self::$password);
         self::$pdo_utf8->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         self::$pdo_utf8->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
       } catch (PDOException $e) {
@@ -33,7 +38,7 @@ class Conexao
   {
     if (self::$pdo_latin1 === null) {
       try {
-        self::$pdo_latin1 = new PDO("mysql:host=127.0.0.1;dbname=sicomercio_teste;charset=latin1", "root", "");
+        self::$pdo_latin1 = new PDO("mysql:host=" . self::$host . ";dbname=" . self::$dbname . ";charset=latin1", "" . self::$user . ", " . self::$password);
         self::$pdo_latin1->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         self::$pdo_latin1->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
       } catch (PDOException $e) {
